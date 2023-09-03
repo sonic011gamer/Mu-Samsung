@@ -1,0 +1,30 @@
+[Defines]
+  DEC_SPECIFICATION                   = 0x00010005
+  PACKAGE_NAME                        = SamsungPkg
+  PACKAGE_GUID                        = 06ceabcf-1ba3-43c5-9d8c-2ff386db8b30
+  PACKAGE_VERSION                     = 0.1
+
+[Includes.common]
+  Include                               # Root include for the package
+
+[Guids.common]
+  gSamsungPkgTokenSpaceGuid           = { 0x06ceabcf, 0x1ba3, 0x43c5, { 0x9d, 0x8c, 0x2f, 0xf3, 0x86, 0xdb, 0x8b, 0x30 } }
+
+[PcdsFixedAtBuild.common]
+  # PNG File GUIDs
+  gSamsungPkgTokenSpaceGuid.PcdNoBootOSFile|{ 0x09, 0xe1, 0x7a, 0x8a, 0x31, 0x12, 0x41, 0x21, 0xa4, 0x37, 0x18, 0x3c, 0xf1, 0x88, 0xee, 0x66}|VOID*|0x0000a200
+
+  # SmBios
+  gSamsungPkgTokenSpaceGuid.PcdSmbiosSystemVendor|""|VOID*|0x0000a300
+  gSamsungPkgTokenSpaceGuid.PcdSmbiosProcessorModel|""|VOID*|0x0000a301
+  gSamsungPkgTokenSpaceGuid.PcdSmbiosProcessorRetailModel|""|VOID*|0x0000a302
+  gSamsungPkgTokenSpaceGuid.PcdSmbiosSystemModel|""|VOID*|0x0000a303
+  gSamsungPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|""|VOID*|0x0000a304
+  gSamsungPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|""|VOID*|0x0000a305
+  gSamsungPkgTokenSpaceGuid.PcdSmbiosBoardModel|""|VOID*|0x0000a306
+
+  # Simple FrameBuffer
+  gSamsungPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|0|UINT32|0x0000a400
+  gSamsungPkgTokenSpaceGuid.PcdMipiFrameBufferHeight|0|UINT32|0x0000a401
+  gSamsungPkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|0|UINT32|0x0000a402
+  gSamsungPkgTokenSpaceGuid.PcdMipiFrameBufferDelay|0|UINT32|0x0000a403

@@ -1,0 +1,11 @@
+[Defines]
+  DEC_SPECIFICATION                   = 0x00010005
+  PACKAGE_NAME                        = Exynos9820Pkg
+  PACKAGE_GUID                        = 335ac97f-f53a-4837-ae96-58ffeb74a2d5
+  PACKAGE_VERSION                     = 0.1
+
+[Includes.common]
+  Include                               # Root include for the package
+
+[Guids.common]
+  gExynos9820PkgTokenSpaceGuid        = { 0x335ac97f, 0xf53a, 0x4837, { 0xae, 0x96, 0x58, 0xff, 0xeb, 0x74, 0xa2, 0xd5 } }
