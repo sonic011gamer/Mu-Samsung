@@ -24,6 +24,10 @@
   BUILD_TARGETS                  = DEBUG|RELEASE
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = starltePkg/starlte.fdf
+  BROKEN_CNTFRQ_EL0              = 1
+
+[BuildOptions.common]
+  *_CLANG38_AARCH64_CC_FLAGS = -DBROKEN_CNTFRQ_EL0=$(BROKEN_CNTFRQ_EL0)
 
 [LibraryClasses.common]
   PlatformMemoryMapLib|starltePkg/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.inf

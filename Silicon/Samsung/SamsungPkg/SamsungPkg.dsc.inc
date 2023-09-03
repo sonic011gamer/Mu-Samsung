@@ -262,7 +262,11 @@
 
   ArmPlatformLib|SamsungPkg/Library/ArmPlatformLib/ArmPlatformLib.inf
 
+!if $(BROKEN_CNTFRQ_EL0) == 1
+  TimerLib|SamsungPkg/Library/ArmArchTimerLib/ArmArchTimerLib.inf
+!else
   TimerLib|ArmPkg/Library/ArmArchTimerLib/ArmArchTimerLib.inf
+!endif
 
   CapsuleLib|MdeModulePkg/Library/DxeCapsuleLibNull/DxeCapsuleLibNull.inf
   BootLogoLib|MdeModulePkg/Library/BootLogoLib/BootLogoLib.inf
