@@ -88,8 +88,6 @@
 
 ## Galaxy S9
 
-**WARNING: cntfrq_el0 ARM Register dosen't get set by the Firmware before, UEFI needs it but dosen't have it so it won't continue boot.**
-
 <img align="right" src="https://github.com/Robotix22/Mu-Samsung/blob/main/Pictures/Galaxy-S9.png" width="500" alt="Preview">
 
 **SoC: Exynos 9810** <br />
