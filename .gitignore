@@ -1,0 +1,6 @@
+Build/
+Conf/
+ImageResources/bootpayload.bin
+Mu-*.img
+Platforms/Samsung/starltePkg/__pycache__/
+Platforms/Samsung/beyond1ltePkg/__pycache__/
