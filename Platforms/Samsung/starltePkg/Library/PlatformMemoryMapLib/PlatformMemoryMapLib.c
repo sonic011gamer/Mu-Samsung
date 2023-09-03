@@ -63,6 +63,9 @@ static ARM_MEMORY_REGION_DESCRIPTOR_EX gDeviceMemoryDescriptorEx[] = {
      EfiConventionalMemory, ARM_MEMORY_REGION_ATTRIBUTE_WRITE_BACK},
 
     /* Register regions */
+    {"Periphs", 0x00000000, 0x20000000, AddDev,
+     EFI_RESOURCE_MEMORY_MAPPED_IO, EFI_RESOURCE_ATTRIBUTE_UNCACHEABLE,
+     EfiMemoryMappedIO, ARM_MEMORY_REGION_ATTRIBUTE_NONSECURE_DEVICE},
 
     /* Terminator for MMU */
     {"Terminator", 0, 0, 0, 0, 0, 0, 0}};

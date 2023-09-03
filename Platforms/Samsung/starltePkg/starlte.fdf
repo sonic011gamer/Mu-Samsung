@@ -115,7 +115,7 @@ READ_LOCK_STATUS   = TRUE
 
   !include SamsungPkg/Frontpage.fdf.inc
 
-  INF DfciPkg/IdentityAndAuthManager/IdentityAndAuthManagerDxe.inf
+  INF DfciPkg/AuthManagerNull/AuthManagerNull.inf
 
   FILE FREEFORM = PCD(gOemPkgTokenSpaceGuid.PcdLogoFile) {
     SECTION RAW = starltePkg/Include/Resources/BootLogo.png
