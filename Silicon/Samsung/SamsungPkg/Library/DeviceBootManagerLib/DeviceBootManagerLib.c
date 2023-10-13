@@ -925,7 +925,7 @@ DeviceBootManagerPriorityBoot (
   //   2. FrontPageBoot                load FrontPage
   //   3. AltDeviceBoot                load alternate boot order
   //   4. Both indicators are present  Load NetworkUnlock
-
+  FrontPageBoot = TRUE;
   if (AltDeviceBoot) {
     // Alternate boot or Network Unlock option
     if (FrontPageBoot) {

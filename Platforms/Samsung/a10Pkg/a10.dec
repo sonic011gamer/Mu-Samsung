@@ -1,0 +1,11 @@
+[Defines]
+  DEC_SPECIFICATION                   = 0x00010005
+  PACKAGE_NAME                        = a10
+  PACKAGE_GUID                        = 93cf4d7c-0441-4a40-891b-4b5f8d4a34ef
+  PACKAGE_VERSION                     = 0.1
+
+[Includes.common]
+  Include                               # Root include for the package
+
+[Guids.common]
+  ga10TokenSpaceGuid           = { 0x93cf4d7c, 0x0441, 0x4a40, { 0x89, 0x1b, 0x4b, 0x5f, 0x8d, 0x4a, 0x34, 0xef } }

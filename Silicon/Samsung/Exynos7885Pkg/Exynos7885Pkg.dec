@@ -1,0 +1,11 @@
+[Defines]
+  DEC_SPECIFICATION                   = 0x00010005
+  PACKAGE_NAME                        = Exynos7885Pkg
+  PACKAGE_GUID                        = d52077f4-3271-4cdd-a72e-524fd614a790
+  PACKAGE_VERSION                     = 0.1
+
+[Includes.common]
+  Include                               # Root include for the package
+
+[Guids.common]
+  gExynos7885PkgTokenSpaceGuid        = { 0xd52077f4, 0x3271, 0x4cdd, { 0xa7, 0x2e, 0x52, 0x4f, 0xd6, 0x14, 0xa7, 0x90 } }

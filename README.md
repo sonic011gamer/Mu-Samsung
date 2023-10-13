@@ -1,6 +1,6 @@
 # [Project Mu](https://microsoft.github.io/mu/) UEFI Implementation for Samsung Exynos™ Devices
 
-<!-- ![Banner](https://github.com/Robotix22/Mu-Samsung/blob/main/Pictures/Banner.png) -->
+<!-- ![Banner](https://github.com/sonic011gamer/Mu-Samsung/blob/main/Pictures/Banner.png) -->
 
 ## Description
 
