@@ -38,6 +38,8 @@
 [LibraryClasses.common]
   PlatformPeiLib|Exynos7885Pkg/Library/PlatformPeiLib/PlatformPeiLib.inf
   PlatformPrePiLib|Exynos7885Pkg/Library/PlatformPrePiLib/PlatformPrePiLib.inf
+  HwResetSystemLib|Exynos7885Pkg/Library/ResetSystemLib/ResetSystemLib.inf
+  ResetSystemLib|Exynos7885Pkg/Library/ResetSystemLib/ResetSystemLib.inf
 
 [Components.common]
   Exynos7885Pkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
