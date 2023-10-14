@@ -20,6 +20,7 @@ This repo brings UEFI Firmware on your Device (If supported) to boot OSs like Wi
 
 Thanks to [Gustave Monce](https://github.com/gus33000) for his [SurfaceDuoPkg](https://github.com/WOA-Project/SurfaceDuoPkg), without it this repo would probally not exist.
 Also Thanks to [sonic011gamer](https://github.com/sonic011gamer) for his [edk2-exynos](https://github.com/sonic011gamer/edk2-exynos), without it, FrameBuffer wouldn't probally work.
+Also Thnks to [Robotix22](https://github.com/robotix22) for making the original Mu-Samsung, without it, sonic wouldnt've found the folder on his computer.
 
 ## License
 
