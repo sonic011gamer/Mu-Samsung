@@ -19,7 +19,7 @@ This repo brings UEFI Firmware on your Device (If supported) to boot OSs like Wi
 ## Credits
 
 Thanks to [Gustave Monce](https://github.com/gus33000) for his [SurfaceDuoPkg](https://github.com/WOA-Project/SurfaceDuoPkg), without it this repo would probally not exist.
-Also Thanks to [sonic011gamer](https://github.com/sonic011gamer) for his [edk2-exynos](https://github.com/sonic011gamer/edk2-exynos), without it, FrameBuffer wouldn't probally work.
+Also thanks to [Robotix22](https://github.com/Robotix22) for his Mu-Qcom base. Without it, I would've had to re-port everything from my lost repo (not fun).
 
 ## License
 
