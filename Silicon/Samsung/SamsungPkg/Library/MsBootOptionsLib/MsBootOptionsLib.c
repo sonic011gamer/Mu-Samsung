@@ -21,8 +21,10 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 #include <Library/UefiBootServicesTableLib.h>
 #include <Library/UefiLib.h>
 
+#define INTERNAL_UEFI_SHELL_NAME  L"Internal UEFI Shell"
 #define MS_SDD_BOOT       L"Internal Storage"
 #define MS_SDD_BOOT_PARM  "SDD"
+#define INTERNAL_WINPE_RAMDISK_NAME L"Internal Windows PE Ramdisk"
 
 typedef struct {
   MEDIA_FW_VOL_DEVICE_PATH    FvDevPath;
@@ -329,35 +331,16 @@ CreateFvBootOption (
                    DevicePathFromHandle (LoadedImage->DeviceHandle),
                    (EFI_DEVICE_PATH_PROTOCOL *)&FileNode
                    );
-    if (DevicePath == NULL) {
-      ASSERT (DevicePath != NULL);
-      return EFI_OUT_OF_RESOURCES;
-    }
   } else {
-    if (IsZeroGuid (PcdGetPtr (PcdShellFvGuid))) {
-      // Search all FV's for Shell.
-      DevicePath = CreateShellDevicePath ();
-      if (DevicePath == NULL) {
-        return EFI_NOT_FOUND;
-      }
-    } else {
-      // Create FV devicepath from template
-      DevicePath = (EFI_DEVICE_PATH_PROTOCOL *)AllocateCopyPool (sizeof (FV_PIWG_DEVICE_PATH), &mFvPIWGDevicePathTemplate);
-      // Update FvName to the Shell GUID from PCD if it is not ZeroGuid
-      CopyGuid (
-        &((FV_PIWG_DEVICE_PATH *)DevicePath)->FvDevPath.FvName,
-        PcdGetPtr (PcdShellFvGuid)
-        );
+    DevicePath = CreateShellDevicePath ();
+    if (DevicePath == NULL) {
+      return EFI_NOT_FOUND;
     }
 
     DevicePath = AppendDevicePathNode (
-                   (EFI_DEVICE_PATH_PROTOCOL *)DevicePath,
+                   DevicePath,
                    (EFI_DEVICE_PATH_PROTOCOL *)&FileNode
                    );
-    if (DevicePath == NULL) {
-      ASSERT (DevicePath != NULL);
-      return EFI_OUT_OF_RESOURCES;
-    }
   }
 
   Status = EfiBootManagerInitializeLoadOption (
@@ -370,11 +353,7 @@ CreateFvBootOption (
              OptionalData,
              OptionalDataSize
              );
-
-  if (DevicePath != NULL) {
-    FreePool (DevicePath);
-  }
-
+  FreePool (DevicePath);
   return Status;
 }
 
@@ -407,20 +386,20 @@ RegisterFvBootOption (
   EFI_BOOT_MANAGER_LOAD_OPTION  NewOption;
   EFI_BOOT_MANAGER_LOAD_OPTION  *BootOptions;
   UINTN                         BootOptionCount;
+  UINTN                         i;
 
   NewOption.OptionNumber = LoadOptionNumberUnassigned;
+  //DEBUG((DEBUG_INFO, "%a - Registering CDBoot.efi boot option\n", __FUNCTION__));
   Status                 = CreateFvBootOption (FileGuid, Description, &NewOption, Attributes, OptionalData, OptionalDataSize);
   if (!EFI_ERROR (Status)) {
     BootOptions = EfiBootManagerGetLoadOptions (&BootOptionCount, LoadOptionTypeBoot);
 
-    if (BootOptions == NULL) {
-      DEBUG ((DEBUG_INFO, "No boot options found. Proceeding to add boot options.\n"));
-    }
-
     OptionIndex = EfiBootManagerFindLoadOption (&NewOption, BootOptions, BootOptionCount);
+    //DEBUG((DEBUG_INFO, "%a - CDBoot option index is %d\n", __FUNCTION__, OptionIndex));
     if (OptionIndex == -1) {
       NewOption.Attributes ^= LOAD_OPTION_ACTIVE;
       OptionIndex           = EfiBootManagerFindLoadOption (&NewOption, BootOptions, BootOptionCount);
+      //DEBUG((DEBUG_INFO, "%a - CDBoot option index is %d\n", __FUNCTION__, OptionIndex));
       NewOption.Attributes ^= LOAD_OPTION_ACTIVE;
     }
 
@@ -435,6 +414,22 @@ RegisterFvBootOption (
 
     EfiBootManagerFreeLoadOption (&NewOption);
     EfiBootManagerFreeLoadOptions (BootOptions, BootOptionCount);
+} else {	
+    // The Shell is optional.  If the shell cannot be created (due to not in image), then	
+    // ensure the boot option for INTERNAL SHELL is deleted.	
+    if (0 == StrCmp (INTERNAL_UEFI_SHELL_NAME, Description)) {	
+      BootOptions = EfiBootManagerGetLoadOptions (&BootOptionCount, LoadOptionTypeBoot);	
+      if (BootOptions == NULL) {	
+        DEBUG ((DEBUG_INFO, "No boot options found. Skipping deletion.\n"));	
+      }	
+      for (i = 0; i < BootOptionCount; i++) {	
+        if (0 == StrCmp (INTERNAL_UEFI_SHELL_NAME, BootOptions[i].Description)) {	
+          EfiBootManagerDeleteLoadOptionVariable (BootOptions[i].OptionNumber, LoadOptionTypeBoot);	
+          DEBUG ((DEBUG_INFO, "Deleting Boot option as Boot%04x - %s\n", BootOptions[i].OptionNumber, BootOptions[i].Description));	
+        }	
+      }	
+      EfiBootManagerFreeLoadOptions (BootOptions, BootOptionCount);	
+    }
   }
 
   return NewOption.OptionNumber;
@@ -456,6 +451,8 @@ MsBootOptionsLibRegisterDefaultBootOptions (
   DEBUG ((DEBUG_INFO, "%a\n", __FUNCTION__));
 
   RegisterFvBootOption (&gMsBootPolicyFileGuid, MS_SDD_BOOT, (UINTN)-1, LOAD_OPTION_ACTIVE, (UINT8 *)MS_SDD_BOOT_PARM, sizeof (MS_SDD_BOOT_PARM));
+  RegisterFvBootOption (PcdGetPtr (PcdShellFile), INTERNAL_UEFI_SHELL_NAME, (UINTN)-1, LOAD_OPTION_ACTIVE, NULL, 0);
+  RegisterFvBootOption (&gMsBootPolicyFileGuid, INTERNAL_WINPE_RAMDISK_NAME, (UINTN)-1, LOAD_OPTION_ACTIVE, NULL, 0);
 }
 
 /**
@@ -471,9 +468,10 @@ MsBootOptionsLibGetDefaultOptions (
   OUT UINTN  *OptionCount
   )
 {
-  UINTN                         LocalOptionCount      = 1;
+  UINTN                         LocalOptionCount      = 3;
   EFI_BOOT_MANAGER_LOAD_OPTION  *Option;
   EFI_STATUS                    Status;
+  EFI_STATUS                    Status2;
 
   Option = (EFI_BOOT_MANAGER_LOAD_OPTION *)AllocateZeroPool (sizeof (EFI_BOOT_MANAGER_LOAD_OPTION) * LocalOptionCount);
   ASSERT (Option != NULL);
@@ -483,7 +481,12 @@ MsBootOptionsLibGetDefaultOptions (
   }
 
   Status  = CreateFvBootOption (&gMsBootPolicyFileGuid, MS_SDD_BOOT, &Option[0], LOAD_OPTION_ACTIVE, (UINT8 *)MS_SDD_BOOT_PARM, sizeof (MS_SDD_BOOT_PARM));
-
+  Status |= CreateFvBootOption (&gMsBootPolicyFileGuid, INTERNAL_WINPE_RAMDISK_NAME, &Option[1], LOAD_OPTION_ACTIVE, NULL, 0);
+  Status2 = CreateFvBootOption (PcdGetPtr (PcdShellFile), INTERNAL_UEFI_SHELL_NAME, &Option[4], LOAD_OPTION_ACTIVE, NULL, 0);
+  if (EFI_ERROR (Status2)) {
+    // The shell is optional.  So, ignore that we cannot create it.
+    LocalOptionCount--;
+  }
   if (EFI_ERROR (Status)) {
     DEBUG ((DEBUG_ERROR, "%a Error creating defatult boot options\n", __FUNCTION__));
     FreePool (Option);

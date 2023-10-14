@@ -69,3 +69,7 @@
   gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|80
 
 !include Exynos7885Pkg/Exynos7885Pkg.dsc.inc
+[Components.common]
+a10Pkg/AcpiTables/AcpiTables.inf
+MdeModulePkg/Universal/Disk/RamDiskDxe/RamDiskDxe.inf
+SamsungPkg/Drivers/BootRamDiskHelperDxe/BootRamDiskHelperDxe.inf 

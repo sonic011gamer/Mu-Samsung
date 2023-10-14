@@ -115,6 +115,10 @@ READ_LOCK_STATUS   = TRUE
 
   !include SamsungPkg/Frontpage.fdf.inc
 
+  # RAMDisk Support
+  INF MdeModulePkg/Universal/Disk/RamDiskDxe/RamDiskDxe.inf
+  INF SamsungPkg/Drivers/BootRamDiskHelperDxe/BootRamDiskHelperDxe.inf 
+  
   INF DfciPkg/AuthManagerNull/AuthManagerNull.inf
 
   FILE FREEFORM = PCD(gOemPkgTokenSpaceGuid.PcdLogoFile) {
@@ -128,7 +132,14 @@ READ_LOCK_STATUS   = TRUE
   }
 
   INF SamsungPkg/Drivers/GpioButtons/GpioButtons.inf
-  INF SamsungPkg/Drivers/KernelErrataPatcher/KernelErrataPatcher.inf
+ # INF SamsungPkg/Drivers/KernelErrataPatcher/KernelErrataPatcher.inf
+
+  ## Embedded RAMDisk (IMG format)
+  FILE FREEFORM = 650B7CD0-94F8-46CC-88DE-8C199D41EDA3 {
+  SECTION RAW = a10Pkg/RAMDisk/WinPE.img
+  SECTION UI = "Embedded RAMDisk"  
+  
+  }
 
 [FV.FVMAIN_COMPACT]
 FvAlignment        = 8
