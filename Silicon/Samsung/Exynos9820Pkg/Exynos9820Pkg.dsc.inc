@@ -38,7 +38,8 @@
 [LibraryClasses.common]
   PlatformPeiLib|Exynos9820Pkg/Library/PlatformPeiLib/PlatformPeiLib.inf
   PlatformPrePiLib|Exynos9820Pkg/Library/PlatformPrePiLib/PlatformPrePiLib.inf
-
+  HwResetSystemLib|ArmPkg/Library/ArmSmcPsciResetSystemLib/ArmSmcPsciResetSystemLib.inf
+  ResetSystemLib|ArmPkg/Library/ArmSmcPsciResetSystemLib/ArmSmcPsciResetSystemLib.inf
 [Components.common]
   Exynos9820Pkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
 

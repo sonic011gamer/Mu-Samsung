@@ -38,8 +38,10 @@
 [LibraryClasses.common]
   PlatformPeiLib|Exynos9810Pkg/Library/PlatformPeiLib/PlatformPeiLib.inf
   PlatformPrePiLib|Exynos9810Pkg/Library/PlatformPrePiLib/PlatformPrePiLib.inf
-
+  HwResetSystemLib|ArmPkg/Library/ArmSmcPsciResetSystemLib/ArmSmcPsciResetSystemLib.inf
+  ResetSystemLib|ArmPkg/Library/ArmSmcPsciResetSystemLib/ArmSmcPsciResetSystemLib.inf
+  
 [Components.common]
   Exynos9810Pkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
-
+  
 !include SamsungPkg/SamsungPkg.dsc.inc
