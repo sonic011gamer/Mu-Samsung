@@ -2,13 +2,13 @@
 #include <Library/PlatformMemoryMapLib.h>
 
 static ARM_MEMORY_REGION_DESCRIPTOR_EX gDeviceMemoryDescriptorEx[] = {
-    /*
-     * Name, Address, Length, HobOption,
-     * ResourceAttribute, ArmAttributes,
-     * ResourceType, MemoryType
-     */
+    //
+    // Name, Address, Length, HobOption,
+    // ResourceAttribute, ArmAttributes,
+    // ResourceType, MemoryType
+    //
 
-    /* DDR Regions */
+    // DDR Regions
     {"HLOS 0", 0x80000000, 0x00C00000, AddMem,
      EFI_RESOURCE_SYSTEM_MEMORY, SYSTEM_MEMORY_RESOURCE_ATTR_CAPABILITIES,
      EfiConventionalMemory, ARM_MEMORY_REGION_ATTRIBUTE_WRITE_BACK},
@@ -57,17 +57,17 @@ static ARM_MEMORY_REGION_DESCRIPTOR_EX gDeviceMemoryDescriptorEx[] = {
      EFI_RESOURCE_SYSTEM_MEMORY, SYSTEM_MEMORY_RESOURCE_ATTR_CAPABILITIES,
      EfiReservedMemoryType, ARM_MEMORY_REGION_ATTRIBUTE_WRITE_BACK},
 
-    /* RAM partition regions */
+    // RAM partition regions
     {"RAM Partition", 0x880000000, 0x80000000, AddMem,
      EFI_RESOURCE_SYSTEM_MEMORY, SYSTEM_MEMORY_RESOURCE_ATTR_CAPABILITIES,
      EfiConventionalMemory, ARM_MEMORY_REGION_ATTRIBUTE_WRITE_BACK},
 
-    /* Register regions */
-    {"Periphs", 0x00000000, 0x20000000, AddDev,
+    // Register regions
+    {"Periphs", 0x00000000, 0x80000000, AddDev,
      EFI_RESOURCE_MEMORY_MAPPED_IO, EFI_RESOURCE_ATTRIBUTE_UNCACHEABLE,
      EfiMemoryMappedIO, ARM_MEMORY_REGION_ATTRIBUTE_NONSECURE_DEVICE},
 
-    /* Terminator for MMU */
+    // Terminator for MMU
     {"Terminator", 0, 0, 0, 0, 0, 0, 0}};
 
 ARM_MEMORY_REGION_DESCRIPTOR_EX *GetPlatformMemoryMap()

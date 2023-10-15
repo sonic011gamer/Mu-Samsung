@@ -24,4 +24,4 @@ DisplayPostBootGraphic (
   INTN DestX, INTN DestY
   );
 
-#endif
+#endif /* _BOOT_GRAPHICS_H_ */

@@ -1,0 +1,11 @@
+[Defines]
+  DEC_SPECIFICATION                   = 0x00010005
+  PACKAGE_NAME                        = E7885Pkg
+  PACKAGE_GUID                        = b4a4a63e-29e5-4ded-8c51-4d9af4efa851
+  PACKAGE_VERSION                     = 0.1
+
+[Includes.common]
+  Include                               # Root include for the package
+
+[Guids.common]
+  gE7885PkgTokenSpaceGuid             = { 0xb4a4a63e, 0x29e5, 0x4ded, { 0x8c, 0x51, 0x4d, 0x9a, 0xf4, 0xef, 0xa8, 0x51 } }

@@ -30,4 +30,4 @@ GetPostBootGraphic (
   OUT UINT8     **ImageData
   );
 
-#endif
+#endif /* _BOOT_GRAPHICS_PROVIDER_H_ */

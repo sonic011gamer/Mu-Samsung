@@ -16,7 +16,7 @@
 ################################################################################
 [Defines]
   PLATFORM_NAME                  = a10
-  PLATFORM_GUID                  = 93cf4d7c-0441-4a40-891b-4b5f8d4a34ef
+  PLATFORM_GUID                  = f54e021f-3f08-4971-9860-56892e7e78cb
   PLATFORM_VERSION               = 0.1
   DSC_SPECIFICATION              = 0x00010005
   OUTPUT_DIRECTORY               = Build/a10Pkg
@@ -68,4 +68,4 @@
   gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|90
   gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|80
 
-!include Exynos7885Pkg/Exynos7885Pkg.dsc.inc
+!include E7885Pkg/E7885Pkg.dsc.inc

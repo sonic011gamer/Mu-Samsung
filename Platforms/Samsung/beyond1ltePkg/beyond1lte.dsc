@@ -47,7 +47,7 @@
   gEmbeddedTokenSpaceGuid.PcdPrePiStackSize|0x00040000      # 256K stack
 
   # SmBios
-  gSamsungPkgTokenSpaceGuid.PcdSmbiosSystemVendor|"Samsung Electronics Co"
+  gSamsungPkgTokenSpaceGuid.PcdSmbiosSystemVendor|"Samsung Electronics Co., Ltd"
   gSamsungPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Galaxy S10"
   gSamsungPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"G973F"
   gSamsungPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Galaxy_S10_G973F"
@@ -68,4 +68,4 @@
   gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|180
   gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|160
 
-!include Exynos9820Pkg/Exynos9820Pkg.dsc.inc
+!include E9820Pkg/E9820Pkg.dsc.inc

@@ -67,10 +67,11 @@ PrePiMain (
   UINTN                       ArmCoreCount;
   ARM_CORE_INFO               *ArmCoreInfoTable;
   EFI_STATUS                  Status;
-  CHAR8                       Buffer[100];
-  UINTN                       CharCount;
   UINTN                       StacksSize;
   FIRMWARE_SEC_PERFORMANCE    Performance;
+
+  DXE_MEMORY_PROTECTION_SETTINGS DxeSettings;
+  MM_MEMORY_PROTECTION_SETTINGS  MmSettings;
 
   UINTN MemoryBase     = 0;
   UINTN MemorySize     = 0;
@@ -109,18 +110,6 @@ PrePiMain (
 
   // Initialize the architecture specific bits
   ArchInitialize ();
-
-  // Initialize the Serial Port
-  SerialPortInitialize ();
-  CharCount = AsciiSPrint (
-                Buffer,
-                sizeof (Buffer),
-                "UEFI firmware (version %s built at %a on %a)\n\r",
-                (CHAR16 *)PcdGetPtr (PcdFirmwareVersionString),
-                __TIME__,
-                __DATE__
-                );
-  SerialPortWrite ((UINT8 *)Buffer, CharCount);
 
   // Initialize the Debug Agent for Source Level Debugging
   InitializeDebugAgent (DEBUG_AGENT_INIT_POSTMEM_SEC, NULL, NULL);
@@ -172,6 +161,12 @@ PrePiMain (
   // Initialize Platform HOBs (CpuHob and FvHob)
   Status = PlatformPeim ();
   ASSERT_EFI_ERROR (Status);
+
+  DxeSettings = (DXE_MEMORY_PROTECTION_SETTINGS)DXE_MEMORY_PROTECTION_SETTINGS_OFF;
+  MmSettings  = (MM_MEMORY_PROTECTION_SETTINGS)MM_MEMORY_PROTECTION_SETTINGS_OFF;
+
+  BuildGuidDataHob(&gDxeMemoryProtectionSettingsGuid, &DxeSettings, sizeof(DxeSettings));
+  BuildGuidDataHob(&gMmMemoryProtectionSettingsGuid, &MmSettings, sizeof(MmSettings));
 
   // Now, the HOB List has been initialized, we can register performance information
   PERF_START (NULL, "PEI", NULL, StartTimeStamp);

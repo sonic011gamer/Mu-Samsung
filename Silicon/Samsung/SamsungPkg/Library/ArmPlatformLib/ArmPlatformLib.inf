@@ -43,7 +43,6 @@
   gArmTokenSpaceGuid.PcdArmPrimaryCoreMask
   gArmTokenSpaceGuid.PcdArmPrimaryCore
   gArmTokenSpaceGuid.PcdFdSize
-  gArmTokenSpaceGuid.PcdGicRedistributorsBase
   gSamsungPkgTokenSpaceGuid.PcdMipiFrameBufferWidth
   gSamsungPkgTokenSpaceGuid.PcdMipiFrameBufferHeight
   gSamsungPkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp

@@ -11,13 +11,13 @@ function _help(){
     echo "  --venv, -v:                      Installs pip requirements in venv not local."
     echo "  --help, -h:                      Shows this Help."
     echo
-    echo "MainPage: https://github.com/Robotix22/Mu-Samsung"
+    echo "MainPage: https://github.com/sonic011gamer/Mu-Samsung"
     exit 1
 }
 
 # Functions to display the Message Type (Error or Warning)
 function _error(){ echo -e "\033[1;31m${@}\033[0m" >&2;exit 1; }
-function _warn(){ echo -e "\033[0;33m${@}\033[0m" >&2; }
+function _warn(){ echo -e "\033[0;33m${@}\033[0m" >&2;exit 1; }
 
 # Set Default Defines
 VENV="FALSE"

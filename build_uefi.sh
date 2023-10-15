@@ -2,18 +2,17 @@
 
 # Function to display Help Message
 function _help(){
-	echo "Usage: ./build_uefi.sh -d <Codename> [-t <Tool Chain> -r <Build Mode> -m <RAM Size>]"
+	echo "Usage: ./build_uefi.sh -d <Codename> [-r <Build Mode> -m <RAM Size>]"
 	echo
 	echo "Build Project Mu UEFI for Samsung Exynos Platforms."
 	echo
 	echo "Options:"
 	echo "	--device <Codename>, -d <Codename>:         Build a Device."
 	echo "	--release <Build Mode>, -r <Build Mode>:    Release mode for building, 'RELEASE' is the default or use 'DEBUG' alternatively."
-	echo "	--tool-chain <Tool Chain>, -t <Tool Chain>: Define wich Tool Chain to use, 'CLANG38' is default."
 	echo "	--help, -h:                                 Shows this Help."
 	echo "	--memory <RAM Size>, -m <RAM Size>:         Define how much Memory your Device has."
 	echo
-	echo "MainPage: https://github.com/Robotix22/Mu-Samsung"
+	echo "MainPage: https://github.com/sonic011gamer/Mu-Samsung"
 	exit 1
 }
 
@@ -25,17 +24,15 @@ function _warn(){ echo -e "\033[0;33m${@}\033[0m" >&2; }
 TARGET_BUILD_MODE="RELEASE"
 MULTIPLE_RAM_SIZE="FALSE"
 TOOL_CHAIN_TAG="CLANG38"
-QCDT_IMAGE_TYPE="FALSE"
 
 # Check if any args were given
-OPTS="$(getopt -o d:hfabcACDO:r:t:m: -l device:,help,release:,tool-chain:,memory: -n 'build_uefi.sh' -- "$@")"||exit 1
+OPTS="$(getopt -o d:hfabcACDO:r:m: -l device:,help,release:,memory: -n 'build_uefi.sh' -- "$@")"||exit 1
 eval set -- "${OPTS}"
 while true
 do	case "${1}" in
 		-d|--device) TARGET_DEVICE="${2}";shift 2;;
 		-h|--help) _help 0;shift;;
 		-r|--release) TARGET_BUILD_MODE="${2}";shift 2;;
-		-t|--tool-chain) TOOL_CHAIN_TAG="${2}";shift 2;;
 		-m|--memory) TARGET_RAM_SIZE="${2}";shift 2;;
 		--) shift;break;;
 		*) _help 1;;
@@ -71,6 +68,7 @@ rm ./BootShim/BootShim.bin &> /dev/null
 rm ./BootShim/BootShim.elf &> /dev/null
 rm ./ImageResources/bootpayload.bin &> /dev/null
 rm Mu-${TARGET_DEVICE}.img &> /dev/null
+rm Mu-${TARGET_DEVICE}.tar &> /dev/null
 
 # Compile BootShim
 cd BootShim
@@ -82,24 +80,11 @@ stuart_setup -c "Platforms/${TARGET_DEVICE_VENDOR}/${TARGET_DEVICE}Pkg/PlatformB
 stuart_update -c "Platforms/${TARGET_DEVICE_VENDOR}/${TARGET_DEVICE}Pkg/PlatformBuild.py" "TOOL_CHAIN_TAG=${TOOL_CHAIN_TAG}"||_error "\nFailed to Update UEFI Env!\n"
 stuart_build -c "Platforms/${TARGET_DEVICE_VENDOR}/${TARGET_DEVICE}Pkg/PlatformBuild.py" "TOOL_CHAIN_TAG=${TOOL_CHAIN_TAG}" "TARGET=${_TARGET_BUILD_MODE}" "RAM_SIZE=${TARGET_RAM_SIZE}" "FD_BASE=${TARGET_FD_BASE}" "FD_SIZE=${TARGET_FD_SIZE}" "FD_BLOCKS=${TARGET_FD_BLOCKS}"||_error "\nFailed to Compile UEFI!\n"
 
-cat ./BootShim/BootShim.bin "./Build/${TARGET_DEVICE}Pkg/${_TARGET_BUILD_MODE}_CLANG38/FV/${TARGET_DEVICE^^}_UEFI.fd" > "./ImageResources/bootpayload.bin"||exit 1
-# Create bootable Android boot.img
-python3 ./ImageResources/mkbootimg.py \
-  --kernel ./ImageResources/bootpayload.bin \
-  --ramdisk ./ImageResources/ramdisk \
-  --kernel_offset 0x00000000 \
-  --ramdisk_offset 0x01000000 \
-  --tags_offset 0x00000100 \
-  --os_version 11.0.0 \
-  --os_patch_level "$(date '+%Y-%m')" \
-  --header_version 1 \
-  -o "boot.img" \
-  ||_error "\nFailed to create Android Boot Image!\n"
-
-  tar -c \
-    boot.img \
-    -f Mu-${TARGET_DEVICE}.tar \
-    ||exit 1
+# Execute Device Specific Boot Image Creation
+if [ -f "configs/${TARGET_DEVICE}.sh" ]
+then source configs/${TARGET_DEVICE}.sh
+else _warn "\nImage Creation Script of ${TARGET_DEVICE} was not Found!\nNo Boot Image Was Generated.\n"
+fi
 
 if [[ ${STATUS} != "STABLE" ]]; then
 	if [[ ${STATUS} == "UNSTABLE" ]];

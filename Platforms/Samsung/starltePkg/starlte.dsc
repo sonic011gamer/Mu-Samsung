@@ -37,7 +37,7 @@
   gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000         # Starting address
   gArmTokenSpaceGuid.PcdSystemMemorySize|0x100000000        # 4GB Size
 
-  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"Robotix22"   # Device Maintainer
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"No Maintainer"   # Device Maintainer
 
   gArmTokenSpaceGuid.PcdCpuVectorBaseAddress|0x80C40000
 
@@ -66,4 +66,4 @@
   gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|180
   gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|155
 
-!include Exynos9810Pkg/Exynos9810Pkg.dsc.inc
+!include E9810Pkg/E9810Pkg.dsc.inc

@@ -5,7 +5,7 @@
 First of you need the sourcecode to compile a UEFI Image. <br />
 Clone the Repo by using:
 ```
-git clone https://github.com/Robotix22/Mu-Samsung.git --recursive
+git clone https://github.com/sonic011gamer/Mu-Samsung.git --recursive
 cd Mu-Samsung
 ```
 
@@ -14,7 +14,7 @@ cd Mu-Samsung
 After Cloning the repo we can now continue on Setting up the Environment. <br />
 First we need to install the needed Packages:
 ```
-./setup_env.sh -p <Package Manager>
+./setup_env.sh -p <Package Manager> [-v]
 ```
 
 ### Step 3:
@@ -24,7 +24,7 @@ So now we are able to begin the real UEFI build:
 ./build_uefi.sh -d <Codename> [-r <Build Mode>] [-m <RAM Size>]
 ```
 
-When then Build is done you will find a `.img` File in the root of the repo.
+When then Build is done you will find a `.img` and a `.tar` File in the root of the repo.
 
 ## Troubleshooting:
 
@@ -49,6 +49,7 @@ When then Build is done you will find a `.img` File in the root of the repo.
    2. I prefer using `apt` to update git but if it tells you it is already newest version you should follow [this](https://www.fosslinux.com/64522/install-git-debian-linux.htm) Guide
 
 ### Device dosen't boot UEFI
+
    1. If your Device dosen't boot the UEFI and is just stuck on the boot screen then maybe the DTB is the Problem.
    2. Dump your DTB from Android `dd if=/sys/firmware/fdt of=/sdcard/<Device Codename>.dtb`.
    3. After that replace `ImageResources/DTBs/<Device Codename>.dtb` with you dumped DTB.
