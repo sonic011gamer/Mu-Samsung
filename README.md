@@ -10,15 +10,15 @@ This repo brings UEFI Firmware on your Device (If supported) to boot OSs like Wi
 
 [Discord Server](https://discord.gg/Dx2QgMx7Sv)
 
-## [Status](https://github.com/Robotix22/Mu-Samsung/blob/main/Status.md)
+## [Status](https://github.com/sonic011gamer/Mu-Samsung/blob/main/Status.md)
 
-## [Building](https://github.com/Robotix22/Mu-Samsung/blob/main/Building.md)
+## [Building](https://github.com/sonic011gamer/Mu-Samsung/blob/main/Building.md)
 
-## [Guides](https://github.com/Robotix22/UEFI-Guides/blob/main/Mu-Samsung/README.md)
+<!-- ## [Guides](https://github.com/sonic011gamer/UEFI-Guides/blob/main/Mu-Samsung/README.md) -->
 
 ## Credits
 
-Thanks to [Gustave Monce](https://github.com/gus33000) for his [SurfaceDuoPkg](https://github.com/WOA-Project/SurfaceDuoPkg), without it this repo would probally not exist.
+Thanks to [Gustave Monce](https://github.com/gus33000) for his [SurfaceDuoPkg](https://github.com/WOA-Project/SurfaceDuoPkg), without it this repo would probally not exist. <br />
 Also thanks to [Robotix22](https://github.com/Robotix22) for his Mu-Qcom base. Without it, I would've had to re-port everything from my lost repo (not fun).
 
 ## License

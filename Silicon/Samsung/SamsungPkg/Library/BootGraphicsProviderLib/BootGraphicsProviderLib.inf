@@ -38,10 +38,6 @@
   PcdLib
   UefiBootServicesTableLib
 
-
-[Protocols]
-
-
 [Pcd]
   gOemPkgTokenSpaceGuid.PcdLogoFile
   gOemPkgTokenSpaceGuid.PcdLowBatteryFile

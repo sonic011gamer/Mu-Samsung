@@ -1,9 +1,11 @@
+.vscode
 Build/
 Conf/
+BootShim/*.bin
+BootShim/*.elf
 ImageResources/bootpayload.bin
-Mu-*.img
 Platforms/Samsung/starltePkg/__pycache__/
 Platforms/Samsung/beyond1ltePkg/__pycache__/
 Platforms/Samsung/a10Pkg/__pycache__/
-boot.img
+Mu-*.img
 Mu-*.tar

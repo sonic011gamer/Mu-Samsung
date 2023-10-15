@@ -1,5 +1,5 @@
 # @file
-# Script to Build Galaxy S10 UEFI firmware
+# Script to Build Galaxy A10 UEFI firmware
 #
 # Copyright (c) Microsoft Corporation.
 # SPDX-License-Identifier: BSD-2-Clause-Patent
@@ -38,12 +38,12 @@ class CommonPlatform():
     WorkspaceRoot = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
     PackagesPath = (
         "Platforms/Samsung",
-        "MU_BASECORE",
-        "Common/MU",
-        "Common/MU_TIANO",
-        "Common/MU_OEM_SAMPLE",
-        "Silicon/Arm/MU_TIANO",
+        "Common/Mu",
+        "Common/Mu_Tiano_Plus",
+        "Common/Mu_OEM_Sample",
         "Features/DFCI",
+        "Mu_Basecore",
+        "Silicon/Arm/Mu_Tiano",
         "Silicon/Samsung"
     )
 
@@ -68,17 +68,17 @@ class SettingsManager(UpdateSettingsManager, SetupSettingsManager, PrEvalSetting
 
     def GetRequiredSubmodules(self):
         """Return iterable containing RequiredSubmodule objects.
-        
+
         !!! note
             If no RequiredSubmodules return an empty iterable
         """
         return [
-            RequiredSubmodule("MU_BASECORE", True),
-            RequiredSubmodule("Common/MU", True),
-            RequiredSubmodule("Common/MU_TIANO", True),
-            RequiredSubmodule("Common/MU_OEM_SAMPLE", True),
-            RequiredSubmodule("Silicon/Arm/MU_TIANO", True),
+            RequiredSubmodule("Common/Mu", True),
+            RequiredSubmodule("Common/Mu_Tiano_Plus", True),
+            RequiredSubmodule("Common/Mu_OEM_Sample", True),
             RequiredSubmodule("Features/DFCI", True),
+            RequiredSubmodule("Mu_Basecore", True),
+            RequiredSubmodule("Silicon/Arm/Mu_Tiano", True),
         ]
 
     def SetArchitectures(self, list_of_requested_architectures):

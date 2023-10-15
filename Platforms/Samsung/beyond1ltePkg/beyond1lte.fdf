@@ -86,7 +86,8 @@ READ_LOCK_STATUS   = TRUE
 
   # Secure Boot Key Enroll
   INF SecurityPkg/VariableAuthenticated/SecureBootConfigDxe/SecureBootConfigDxe.inf
-  #INF SamsungPkg/Drivers/SecureBootProvisioningDxe/SecureBootProvisioningDxe.inf
+  INF SamsungPkg/Drivers/SecureBootProvisioningDxe/SecureBootProvisioningDxe.inf
+  INF SamsungPkg/Drivers/SystemIntegrityPolicyProvisioningDxe/SystemIntegrityPolicyProvisioningDxe.inf
 
   INF EmbeddedPkg/Drivers/VirtualKeyboardDxe/VirtualKeyboardDxe.inf
 
@@ -102,7 +103,7 @@ READ_LOCK_STATUS   = TRUE
   # ACPI and SMBIOS
   INF MdeModulePkg/Universal/Acpi/AcpiTableDxe/AcpiTableDxe.inf
   INF MdeModulePkg/Universal/Acpi/AcpiPlatformDxe/AcpiPlatformDxe.inf
-  INF Exynos9820Pkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
+  INF E9820Pkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
 
   # ACPI Tables
   !include Include/ACPI.inc
@@ -128,7 +129,6 @@ READ_LOCK_STATUS   = TRUE
   }
 
   INF SamsungPkg/Drivers/GpioButtons/GpioButtons.inf
-  INF SamsungPkg/Drivers/KernelErrataPatcher/KernelErrataPatcher.inf
 
 [FV.FVMAIN_COMPACT]
 FvAlignment        = 8

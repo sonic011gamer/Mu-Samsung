@@ -28,7 +28,9 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 #include <Library/MemoryAllocationLib.h>
 #include <Library/MsBootManagerSettingsLib.h>
 #include <Library/MsBootOptionsLib.h>
+#include <Library/MsBootOptions.h>
 #include <Library/MsBootPolicyLib.h>
+#include <Library/MsBootPolicy.h>
 #include <Library/BootGraphicsProviderLib.h>
 #include <Library/BootGraphicsLib.h>
 #include <Library/BootGraphicsProvider.h>
@@ -913,27 +915,29 @@ DeviceBootManagerPriorityBoot (
   )
 {
   BOOLEAN     FrontPageBoot;
-  BOOLEAN     AltDeviceBoot;
+  BOOLEAN     UEFIShell;
   EFI_STATUS  Status;
 
   FrontPageBoot = MsBootPolicyLibIsSettingsBoot ();
-  AltDeviceBoot = MsBootPolicyLibIsAltBoot ();
+  UEFIShell     = MsBootPolicyLibUEFIShell ();
   MsBootPolicyLibClearBootRequests ();
 
+  UEFIShell = TRUE;
+
   // There are four cases:
-  //   1. Nothing pressed.             return EFI_NOT_FOUND
-  //   2. FrontPageBoot                load FrontPage
-  //   3. AltDeviceBoot                load alternate boot order
-  //   4. Both indicators are present  Load NetworkUnlock
-  FrontPageBoot = TRUE;
-  if (AltDeviceBoot) {
+  //   1.  Nothing pressed.             return EFI_NOT_FOUND
+  //   2.  FrontPageBoot                load FrontPage
+  //   3.  UEFIShell                    Load UEFI Shell
+  //   4   Both indicators are present  Load NetworkUnlock
+
+  if (UEFIShell) {
     // Alternate boot or Network Unlock option
     if (FrontPageBoot) {
       DEBUG ((DEBUG_INFO, "[Bds] both detected. NetworkUnlock\n"));
       Status = MsBootOptionsLibGetDefaultBootApp (BootOption, "NS");
     } else {
-      DEBUG ((DEBUG_INFO, "[Bds] alternate boot\n"));
-      Status = MsBootOptionsLibGetDefaultBootApp (BootOption, "MA");
+      DEBUG ((DEBUG_INFO, "[Bds] UEFI Shell\n"));
+      Status = MsBootOptionsLibUEFIShell (BootOption, "VOL-");
     }
   } else if (FrontPageBoot) {
     // Front Page Boot Option
