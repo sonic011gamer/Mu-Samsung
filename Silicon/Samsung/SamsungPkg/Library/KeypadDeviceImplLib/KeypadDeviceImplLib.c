@@ -9,7 +9,7 @@
 #include <Library/DebugLib.h>
 
 #include <Protocol/KeypadDevice.h>
-
+#define USING_SPECIAL_BUTTON FixedPcdGetBool(PcdSpecialButton)
 typedef struct {
   KEY_CONTEXT EfiKeyContext;
   UINT32      PinctrlBase;
@@ -169,9 +169,14 @@ LibKeyUpdateKeyStatus(
 STATIC KEY_CONTEXT_PRIVATE KeyContextPower;
 STATIC KEY_CONTEXT_PRIVATE KeyContextVolumeUp;
 STATIC KEY_CONTEXT_PRIVATE KeyContextVolumeDown;
-STATIC KEY_CONTEXT_PRIVATE KeyContextSpecial;
 
-STATIC KEY_CONTEXT_PRIVATE *KeyList[] = { &KeyContextVolumeDown, &KeyContextVolumeUp, &KeyContextPower, &KeyContextSpecial };
+
+#ifdef USING_SPECIAL_BUTTON
+STATIC KEY_CONTEXT_PRIVATE KeyContextSpecial;
+  STATIC KEY_CONTEXT_PRIVATE *KeyList[] = { &KeyContextVolumeDown, &KeyContextVolumeUp, &KeyContextPower, &KeyContextSpecial };
+#else
+STATIC KEY_CONTEXT_PRIVATE *KeyList[] = { &KeyContextVolumeDown, &KeyContextVolumeUp, &KeyContextPower};
+#endif
 
 STATIC
 VOID

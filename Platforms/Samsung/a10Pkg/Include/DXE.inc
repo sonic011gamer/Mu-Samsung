@@ -29,7 +29,8 @@
   INF MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
   #INF MdeModulePkg/Universal/FvSimpleFileSystemDxe/FvSimpleFileSystemDxe.inf
   INF SamsungPkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
-  INF SamsungPkg/Drivers/GpaDxe/GpaDxe.inf
+  INF SamsungPkg/Drivers/GenericKeypadDeviceDxe/GenericKeypadDeviceDxe.inf
+  INF SamsungPkg/Drivers/KeypadDxe/KeypadDxe.inf 
   INF MdeModulePkg/Universal/BdsDxe/BdsDxe.inf
   INF MdeModulePkg/Universal/Acpi/BootGraphicsResourceTableDxe/BootGraphicsResourceTableDxe.inf
   INF MdeModulePkg/Universal/Acpi/FirmwarePerformanceDataTableDxe/FirmwarePerformanceDxe.inf

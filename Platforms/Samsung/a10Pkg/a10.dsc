@@ -53,6 +53,16 @@
   gSamsungPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Galaxy_A10_A105F"
   gSamsungPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Galaxy A10"
 
+  # Buttons
+  gSamsungPkgTokenSpaceGuid.PcdButtonsPinctrlBase|0x11CB0000
+  gSamsungPkgTokenSpaceGuid.PcdVolumeButtonsBankOffset|0x60
+  gSamsungPkgTokenSpaceGuid.PcdVolumeDownButtonGpaPin|0x6
+  gSamsungPkgTokenSpaceGuid.PcdVolumeUpButtonGpaPin|0x5
+  gSamsungPkgTokenSpaceGuid.PcdPowerButtonBankOffset|0x60
+  gSamsungPkgTokenSpaceGuid.PcdPowerButtonGpaPin|0x7
+  gSamsungPkgTokenSpaceGuid.PcdSpecialButton|FALSE
+  gSamsungPkgTokenSpaceGuid.PcdSpecialButtonGpaPin|0x0
+
   # Simple FrameBuffer
   gSamsungPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|720
   gSamsungPkgTokenSpaceGuid.PcdMipiFrameBufferHeight|1520

@@ -16,5 +16,6 @@ APRIORI DXE {
     INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
     INF ArmPkg/Drivers/ArmPsciMpServicesDxe/ArmPsciMpServicesDxe.inf
 
-    INF SamsungPkg/Drivers/GpaDxe/GpaDxe.inf
+    INF SamsungPkg/Drivers/GenericKeypadDeviceDxe/GenericKeypadDeviceDxe.inf
+    INF SamsungPkg/Drivers/KeypadDxe/KeypadDxe.inf
 }
