@@ -1,0 +1,2 @@
+Code cross-referenced from https://github.com/topser9/kernel_samsung_universal7885/blob/master/drivers/soc/samsung/exynos-reboot.c
+To make a similar library, look in your device's kernel for this driver.

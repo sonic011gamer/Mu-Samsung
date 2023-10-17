@@ -21,70 +21,9 @@
 #include <Library/CacheMaintenanceLib.h>
 
 #define PMU_BASE (0x11c80000)
-#define SWRESET_OFFSET						(0x400)
-
-VOID DestroyExynosMemMap(VOID);
-typedef VOID (EFIAPI *CALL_STUB)(VOID);
-
-VOID
-DestroyExynosMemMap (
-  VOID
-  )
-{
-  EFI_STATUS              Status;
-  UINTN                   MemoryMapSize;
-  EFI_MEMORY_DESCRIPTOR   *MemoryMap;
-  UINTN                   MapKey;
-  UINTN                   DescriptorSize;
-  UINT32                   DescriptorVersion;
-  UINTN                   Pages;
-
-  MemoryMap = NULL;
-  MemoryMapSize = 0;
-  do {
-    Status = gBS->GetMemoryMap (
-                    &MemoryMapSize,
-                    MemoryMap,
-                    &MapKey,
-                    &DescriptorSize,
-                    &DescriptorVersion
-                    );
-    if (Status == EFI_BUFFER_TOO_SMALL) {
-
-      Pages = EFI_SIZE_TO_PAGES (MemoryMapSize) + 1;
-      MemoryMap = AllocatePages (Pages);
-
-      //
-      // Get System MemoryMap
-      //
-      Status = gBS->GetMemoryMap (
-                      &MemoryMapSize,
-                      MemoryMap,
-                      &MapKey,
-                      &DescriptorSize,
-                      &DescriptorVersion
-                      );
-      // Don't do anything between the GetMemoryMap() and ExitBootServices()
-      if (!EFI_ERROR (Status)) {
-        Status = gBS->ExitBootServices (gImageHandle, MapKey);
-        if (EFI_ERROR (Status)) {
-          FreePages (MemoryMap, Pages);
-          MemoryMap = NULL;
-          MemoryMapSize = 0;
-        }
-      }
-    }
-  } while (EFI_ERROR (Status));
-
-  //Clean and invalidate caches.
-  WriteBackInvalidateDataCache();
-  InvalidateInstructionCache();
-
-  //Turning off Caches and MMU
-  ArmDisableDataCache ();
-  ArmDisableInstructionCache ();
-  ArmDisableMmu ();
-}
+#define SWRESET_OFFSET (0x400)
+#define PS_HOLD_CONTROL (0x330C)
+#define PS_HOLD_EN (1 << 8)
 
 /**
   This function causes a system-wide reset (cold reset), in which
@@ -118,10 +57,8 @@ ResetWarm (
   )
 {
   DEBUG ((EFI_D_ERROR, "ResetSystemLib: Warm Reset!"));
-  DestroyExynosMemMap();
-  CALL_STUB   StartOfFv;
-  StartOfFv = (CALL_STUB)(UINTN)FixedPcdGet32(PcdFvBaseAddress);
-  StartOfFv ();
+  //Cold reset for now
+  ResetCold();
 }
 
 /**
@@ -136,7 +73,9 @@ ResetShutdown (
   VOID
   )
 {
-  ResetCold();
+  DEBUG ((EFI_D_ERROR, "ResetSystemLib: Shutting down!"));
+  MmioWrite32(PMU_BASE + PS_HOLD_CONTROL, MmioRead32(PMU_BASE + PS_HOLD_CONTROL) & 0xFFFFFEFF);
+
 }
 
 /**
@@ -157,8 +96,17 @@ ResetPlatformSpecific (
   IN VOID   *ResetData
   )
 {
+  //TODO: Turn this code into actual reboot code.
   // Map the platform specific reset as reboot
-  ResetCold ();
+  //	if (!strcmp(cmd, "charge")) {
+	//	__raw_writel(REBOOT_MODE_CHARGE, addr);
+	//} else if (!strcmp(cmd, "fastboot") || !strcmp(cmd, "fb")) {
+	//	__raw_writel(REBOOT_MODE_FASTBOOT, addr);
+	//} else if (!strcmp(cmd, "bootloader") || !strcmp(cmd, "bl")) {
+	//	__raw_writel(REBOOT_MODE_BOOTLOADER, addr);
+	//} else if (!strcmp(cmd, "recovery")) {
+	//	__raw_writel(REBOOT_MODE_RECOVERY, addr);
+	//}
 }
 
 /**
