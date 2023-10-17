@@ -184,8 +184,8 @@
 |Display||✅|
 |Touchscreen||❌|
 |Clocks||❌|
-|UFS||❌|
-|Buttons||❌|
+|eMMC||❌|
+|Buttons||✅|
 |USB||❌|
 |SD Card||❌|
 |ACPI||❌|
