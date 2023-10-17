@@ -552,9 +552,6 @@
       NULL|SecurityPkg/Library/OemTpm2InitLibNull/OemTpm2InitLibVendorNull.inf
   }
 
-  # Custom Exynos Drivers
-  SamsungPkg/Drivers/GpaDxe/GpaDxe.inf
-
   # Keypad
   SamsungPkg/Drivers/KeypadDxe/KeypadDxe.inf
   SamsungPkg/Drivers/GenericKeypadDeviceDxe/GenericKeypadDeviceDxe.inf
