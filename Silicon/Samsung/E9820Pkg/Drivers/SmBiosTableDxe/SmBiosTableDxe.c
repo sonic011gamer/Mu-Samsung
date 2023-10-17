@@ -398,17 +398,263 @@ SMBIOS_TABLE_TYPE4 mProcessorInfoType4_a55 = {
 };
 
 CHAR8 *mProcessorInfoType4Strings[] = {
-    "Samsung", "Samsung Electronics Co", "Not Specified", "Not Specified",
+    "Samsung", "Samsung Electronics Co., Ltd", "Not Specified", "Not Specified",
     NULL};
 
 /***********************************************************************
         SMBIOS data definition  TYPE7  Cache Information
 ************************************************************************/
-SMBIOS_TABLE_TYPE7 mCacheInfoType7_L2 = {
+SMBIOS_TABLE_TYPE7 mCacheInfoType7_m4_L1I = {
     {EFI_SMBIOS_TYPE_CACHE_INFORMATION, sizeof(SMBIOS_TABLE_TYPE7), 0},
     1,     // SocketDesignation String
     0x380, // Cache Configuration
            // Cache Level        :3  (L1)
+           // Cache Socketed     :1  (Not Socketed)
+           // Reserved           :1
+           // Location           :2  (Internal)
+           // Enabled/Disabled   :1  (Enabled)
+           // Operational Mode   :2  (Unknown)
+           // Reserved           :6
+    0x0080, // Maximum Size
+    0x0080, // Install Size
+    {
+        // Supported SRAM Type
+        0, // Other             :1
+        1, // Unknown           :1
+        0, // NonBurst          :1
+        0, // Burst             :1
+        0, // PiplelineBurst    :1
+        0, // Synchronous       :1
+        0, // Asynchronous      :1
+        0  // Reserved          :9
+    },
+    {
+        // Current SRAM Type
+        0, // Other             :1
+        1, // Unknown           :1
+        0, // NonBurst          :1
+        0, // Burst             :1
+        0, // PiplelineBurst    :1
+        0, // Synchronous       :1
+        0, // Asynchronous      :1
+        0  // Reserved          :9
+    },
+    0,                     // Cache Speed unknown
+    CacheErrorParity,      // Error Correction
+    CacheTypeInstruction,  // System Cache Type
+    CacheAssociativity2Way // Associativity
+};
+
+SMBIOS_TABLE_TYPE7 mCacheInfoType7_a75_a55_L1I = {
+    {EFI_SMBIOS_TYPE_CACHE_INFORMATION, sizeof(SMBIOS_TABLE_TYPE7), 0},
+    1,     // SocketDesignation String
+    0x380, // Cache Configuration
+           // Cache Level        :3  (L1)
+           // Cache Socketed     :1  (Not Socketed)
+           // Reserved           :1
+           // Location           :2  (Internal)
+           // Enabled/Disabled   :1  (Enabled)
+           // Operational Mode   :2  (Unknown)
+           // Reserved           :6
+    0x0080, // Maximum Size
+    0x0080, // Install Size
+    {
+        // Supported SRAM Type
+        0, // Other             :1
+        1, // Unknown           :1
+        0, // NonBurst          :1
+        0, // Burst             :1
+        0, // PiplelineBurst    :1
+        0, // Synchronous       :1
+        0, // Asynchronous      :1
+        0  // Reserved          :9
+    },
+    {
+        // Current SRAM Type
+        0, // Other             :1
+        1, // Unknown           :1
+        0, // NonBurst          :1
+        0, // Burst             :1
+        0, // PiplelineBurst    :1
+        0, // Synchronous       :1
+        0, // Asynchronous      :1
+        0  // Reserved          :9
+    },
+    0,                     // Cache Speed unknown
+    CacheErrorParity,      // Error Correction
+    CacheTypeInstruction,  // System Cache Type
+    CacheAssociativity2Way // Associativity
+};
+
+SMBIOS_TABLE_TYPE7 mCacheInfoType7_m4_L1D = {
+    {EFI_SMBIOS_TYPE_CACHE_INFORMATION, sizeof(SMBIOS_TABLE_TYPE7), 0},
+    1,     // SocketDesignation String
+    0x380, // Cache Configuration
+           // Cache Level        :3  (L1)
+           // Cache Socketed     :1  (Not Socketed)
+           // Reserved           :1
+           // Location           :2  (Internal)
+           // Enabled/Disabled   :1  (Enabled)
+           // Operational Mode   :2  (Unknown)
+           // Reserved           :6
+    0x0040, // Maximum Size
+    0x0040, // Install Size
+    {
+        // Supported SRAM Type
+        0, // Other             :1
+        1, // Unknown           :1
+        0, // NonBurst          :1
+        0, // Burst             :1
+        0, // PiplelineBurst    :1
+        0, // Synchronous       :1
+        0, // Asynchronous      :1
+        0  // Reserved          :9
+    },
+    {
+        // Current SRAM Type
+        0, // Other             :1
+        1, // Unknown           :1
+        0, // NonBurst          :1
+        0, // Burst             :1
+        0, // PiplelineBurst    :1
+        0, // Synchronous       :1
+        0, // Asynchronous      :1
+        0  // Reserved          :9
+    },
+    0,                     // Cache Speed unknown
+    CacheErrorParity,      // Error Correction
+    CacheTypeInstruction,  // System Cache Type
+    CacheAssociativity2Way // Associativity
+};
+
+SMBIOS_TABLE_TYPE7 mCacheInfoType7_a75_a55_L1D = {
+    {EFI_SMBIOS_TYPE_CACHE_INFORMATION, sizeof(SMBIOS_TABLE_TYPE7), 0},
+    1,     // SocketDesignation String
+    0x380, // Cache Configuration
+           // Cache Level        :3  (L1)
+           // Cache Socketed     :1  (Not Socketed)
+           // Reserved           :1
+           // Location           :2  (Internal)
+           // Enabled/Disabled   :1  (Enabled)
+           // Operational Mode   :2  (Unknown)
+           // Reserved           :6
+    0x0080, // Maximum Size
+    0x0080, // Install Size
+    {
+        // Supported SRAM Type
+        0, // Other             :1
+        1, // Unknown           :1
+        0, // NonBurst          :1
+        0, // Burst             :1
+        0, // PiplelineBurst    :1
+        0, // Synchronous       :1
+        0, // Asynchronous      :1
+        0  // Reserved          :9
+    },
+    {
+        // Current SRAM Type
+        0, // Other             :1
+        1, // Unknown           :1
+        0, // NonBurst          :1
+        0, // Burst             :1
+        0, // PiplelineBurst    :1
+        0, // Synchronous       :1
+        0, // Asynchronous      :1
+        0  // Reserved          :9
+    },
+    0,                     // Cache Speed unknown
+    CacheErrorParity,      // Error Correction
+    CacheTypeInstruction,  // System Cache Type
+    CacheAssociativity2Way // Associativity
+};
+
+SMBIOS_TABLE_TYPE7 mCacheInfoType7_m4_L2 = {
+    {EFI_SMBIOS_TYPE_CACHE_INFORMATION, sizeof(SMBIOS_TABLE_TYPE7), 0},
+    1,     // SocketDesignation String
+    0x381, // Cache Configuration
+           // Cache Level        :3  (L2)
+           // Cache Socketed     :1  (Not Socketed)
+           // Reserved           :1
+           // Location           :2  (Internal)
+           // Enabled/Disabled   :1  (Enabled)
+           // Operational Mode   :2  (Unknown)
+           // Reserved           :6
+    0x0400, // Maximum Size
+    0x0400, // Install Size
+    {
+        // Supported SRAM Type
+        0, // Other             :1
+        1, // Unknown           :1
+        0, // NonBurst          :1
+        0, // Burst             :1
+        0, // PiplelineBurst    :1
+        0, // Synchronous       :1
+        0, // Asynchronous      :1
+        0  // Reserved          :9
+    },
+    {
+        // Current SRAM Type
+        0, // Other             :1
+        1, // Unknown           :1
+        0, // NonBurst          :1
+        0, // Burst             :1
+        0, // PiplelineBurst    :1
+        0, // Synchronous       :1
+        0, // Asynchronous      :1
+        0  // Reserved          :9
+    },
+    0,                     // Cache Speed unknown
+    CacheErrorParity,      // Error Correction
+    CacheTypeInstruction,  // System Cache Type
+    CacheAssociativity2Way // Associativity
+};
+
+SMBIOS_TABLE_TYPE7 mCacheInfoType7_a75_a55_L2 = {
+    {EFI_SMBIOS_TYPE_CACHE_INFORMATION, sizeof(SMBIOS_TABLE_TYPE7), 0},
+    1,     // SocketDesignation String
+    0x381, // Cache Configuration
+           // Cache Level        :3  (L2)
+           // Cache Socketed     :1  (Not Socketed)
+           // Reserved           :1
+           // Location           :2  (Internal)
+           // Enabled/Disabled   :1  (Enabled)
+           // Operational Mode   :2  (Unknown)
+           // Reserved           :6
+    0x0200, // Maximum Size
+    0x0200, // Install Size
+    {
+        // Supported SRAM Type
+        0, // Other             :1
+        1, // Unknown           :1
+        0, // NonBurst          :1
+        0, // Burst             :1
+        0, // PiplelineBurst    :1
+        0, // Synchronous       :1
+        0, // Asynchronous      :1
+        0  // Reserved          :9
+    },
+    {
+        // Current SRAM Type
+        0, // Other             :1
+        1, // Unknown           :1
+        0, // NonBurst          :1
+        0, // Burst             :1
+        0, // PiplelineBurst    :1
+        0, // Synchronous       :1
+        0, // Asynchronous      :1
+        0  // Reserved          :9
+    },
+    0,                     // Cache Speed unknown
+    CacheErrorParity,      // Error Correction
+    CacheTypeInstruction,  // System Cache Type
+    CacheAssociativity2Way // Associativity
+};
+
+SMBIOS_TABLE_TYPE7 mCacheInfoType7_m4_L3 = {
+    {EFI_SMBIOS_TYPE_CACHE_INFORMATION, sizeof(SMBIOS_TABLE_TYPE7), 0},
+    1,     // SocketDesignation String
+    0x382, // Cache Configuration
+           // Cache Level        :3  (L3)
            // Cache Socketed     :1  (Not Socketed)
            // Reserved           :1
            // Location           :2  (Internal)
@@ -444,7 +690,7 @@ SMBIOS_TABLE_TYPE7 mCacheInfoType7_L2 = {
     CacheTypeInstruction,  // System Cache Type
     CacheAssociativity2Way // Associativity
 };
-CHAR8 *mCacheInfoType7Strings[] = {"L2 Instruction", "L2 Data", "L2", NULL};
+CHAR8 *mCacheInfoType7Strings[] = {"L1", "L2", "L3", NULL};
 
 /***********************************************************************
         SMBIOS data definition  TYPE16  Physical Memory ArrayInformation
@@ -506,7 +752,7 @@ SMBIOS_TABLE_TYPE17 mMemDevInfoType17 = {
         1, // Unbuffered      :1;
         0, // Reserved1       :1;
     },
-    2133,                 // Speed;
+    1800,                 // Speed;
     2,                    // Manufacturer String
     0,                    // SerialNumber String
     0,                    // AssetTag String
@@ -756,15 +1002,38 @@ VOID CacheInfoUpdateSmbiosType7(VOID)
   EFI_SMBIOS_HANDLE      SmbiosHandle;
 
   LogSmbiosData(
-      (EFI_SMBIOS_TABLE_HEADER *)&mCacheInfoType7_L2,
+      (EFI_SMBIOS_TABLE_HEADER *)&mCacheInfoType7_m4_L1I,
+      mCacheInfoType7Strings, NULL);
+  LogSmbiosData(
+      (EFI_SMBIOS_TABLE_HEADER *)&mCacheInfoType7_a75_a55_L1I,
       mCacheInfoType7Strings, NULL);
 
   LogSmbiosData(
-      (EFI_SMBIOS_TABLE_HEADER *)&mCacheInfoType7_L2,
+      (EFI_SMBIOS_TABLE_HEADER *)&mCacheInfoType7_m4_L1D,
+      mCacheInfoType7Strings, &SmbiosHandle);
+  mProcessorInfoType4_m4.L1CacheHandle = (UINT16)SmbiosHandle;
+
+  LogSmbiosData(
+      (EFI_SMBIOS_TABLE_HEADER *)&mCacheInfoType7_a75_a55_L1D,
+      mCacheInfoType7Strings, &SmbiosHandle);
+  mProcessorInfoType4_a75.L1CacheHandle = (UINT16)SmbiosHandle;
+  mProcessorInfoType4_a55.L1CacheHandle = (UINT16)SmbiosHandle;
+
+  LogSmbiosData(
+      (EFI_SMBIOS_TABLE_HEADER *)&mCacheInfoType7_m4_L2,
       mCacheInfoType7Strings, &SmbiosHandle);
   mProcessorInfoType4_m4.L2CacheHandle = (UINT16)SmbiosHandle;
+
+  LogSmbiosData(
+      (EFI_SMBIOS_TABLE_HEADER *)&mCacheInfoType7_a75_a55_L2,
+      mCacheInfoType7Strings, &SmbiosHandle);
   mProcessorInfoType4_a75.L2CacheHandle = (UINT16)SmbiosHandle;
   mProcessorInfoType4_a55.L2CacheHandle = (UINT16)SmbiosHandle;
+
+  LogSmbiosData(
+      (EFI_SMBIOS_TABLE_HEADER *)&mCacheInfoType7_m4_L3,
+      mCacheInfoType7Strings, &SmbiosHandle);
+  mProcessorInfoType4_m4.L3CacheHandle = (UINT16)SmbiosHandle;
 }
 
 /***********************************************************************
