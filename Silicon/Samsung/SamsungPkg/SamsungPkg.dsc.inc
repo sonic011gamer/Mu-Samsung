@@ -556,6 +556,12 @@
   SamsungPkg/Drivers/KeypadDxe/KeypadDxe.inf
   SamsungPkg/Drivers/GenericKeypadDeviceDxe/GenericKeypadDeviceDxe.inf
 
+!if $(ENABLE_RAMDISK) == 1
+  # RAM Disk
+  MdeModulePkg/Universal/Disk/RamDiskDxe/RamDiskDxe.inf
+  SamsungPkg/Drivers/BootRamDiskHelperDxe/BootRamDiskHelperDxe.inf 
+!endif
+
   SamsungPkg/Drivers/GpioButtons/GpioButtons.inf
   SamsungPkg/Drivers/SecureBootProvisioningDxe/SecureBootProvisioningDxe.inf
   SamsungPkg/Drivers/SystemIntegrityPolicyProvisioningDxe/SystemIntegrityPolicyProvisioningDxe.inf

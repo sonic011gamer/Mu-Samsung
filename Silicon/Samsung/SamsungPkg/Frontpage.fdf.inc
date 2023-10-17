@@ -17,6 +17,12 @@
   INF MsWheaPkg/HwErrBert/HwErrBert.inf
   INF MsWheaPkg/MsWheaReport/Dxe/MsWheaReportDxe.inf
 
+!if $(ENABLE_RAMDISK) == 1
+  # RAMDisk Support
+  INF MdeModulePkg/Universal/Disk/RamDiskDxe/RamDiskDxe.inf
+  INF SamsungPkg/Drivers/BootRamDiskHelperDxe/BootRamDiskHelperDxe.inf 
+!endif
+
   # Hardware Health (Menu) application
   INF MsWheaPkg/HwhMenu/HwhMenu.inf
 
@@ -56,3 +62,11 @@
   FILE FREEFORM = PCD(gOemPkgTokenSpaceGuid.PcdBootFailIndicatorFile) {
     SECTION RAW = SamsungPkg/Applications/FrontPage/Resources/NoBoot.bmp
   }
+
+!if $(ENABLE_RAMDISK) == 1
+  # Embedded RAM Disk
+  FILE FREEFORM = 650B7CD0-94F8-46CC-88DE-8C199D41EDA3 {
+    SECTION RAW = SamsungPkg/RAMDisk/WinPE.img
+    SECTION UI = "RAMDisk"  
+  }
+!endif

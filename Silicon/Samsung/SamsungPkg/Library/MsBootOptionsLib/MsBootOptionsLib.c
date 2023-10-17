@@ -22,10 +22,12 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 #include <Library/UefiBootServicesTableLib.h>
 #include <Library/UefiLib.h>
 
-#define MS_SDD_BOOT       L"Internal Storage"
-#define MS_SDD_BOOT_PARM  "SDD"
-#define MS_USB_BOOT       L"USB Storage"
-#define MS_USB_BOOT_PARM  "USB"
+#define INTERNAL_RAMDISK_IMAGE L"RAM Disk"
+
+#define MS_SDD_BOOT            L"Internal Storage"
+#define MS_SDD_BOOT_PARM       "SDD"
+#define MS_USB_BOOT            L"USB Storage"
+#define MS_USB_BOOT_PARM       "USB"
 
 typedef struct {
   MEDIA_FW_VOL_DEVICE_PATH    FvDevPath;
@@ -368,6 +370,9 @@ MsBootOptionsLibRegisterDefaultBootOptions (
 
   RegisterFvBootOption (&gMsBootPolicyFileGuid, MS_SDD_BOOT, (UINTN)-1, LOAD_OPTION_ACTIVE, (UINT8 *)MS_SDD_BOOT_PARM, sizeof (MS_SDD_BOOT_PARM));
   RegisterFvBootOption (&gMsBootPolicyFileGuid, MS_USB_BOOT, (UINTN)-1, LOAD_OPTION_ACTIVE, (UINT8 *)MS_USB_BOOT_PARM, sizeof (MS_USB_BOOT_PARM));
+#if ENABLE_RAMDISK == 1
+  RegisterFvBootOption (&gSamsungPkgEmbeddedRamdiskGuid, INTERNAL_WINPE_RAMDISK_NAME, (UINTN)-1, LOAD_OPTION_ACTIVE, NULL, 0);
+#endif
 }
 
 /**
@@ -383,7 +388,11 @@ MsBootOptionsLibGetDefaultOptions (
   OUT UINTN  *OptionCount
   )
 {
+#if ENABLE_RAMDISK == 1
+  UINTN                         LocalOptionCount      = 3;
+#else
   UINTN                         LocalOptionCount      = 2;
+#endif
   EFI_BOOT_MANAGER_LOAD_OPTION  *Option;
   EFI_STATUS                    Status;
 
@@ -395,7 +404,10 @@ MsBootOptionsLibGetDefaultOptions (
   }
 
   Status  = CreateFvBootOption (&gMsBootPolicyFileGuid, MS_SDD_BOOT, &Option[0], LOAD_OPTION_ACTIVE, (UINT8 *)MS_SDD_BOOT_PARM, sizeof (MS_SDD_BOOT_PARM));
-  Status |= CreateFvBootOption (&gMsBootPolicyFileGuid, MS_USB_BOOT, &Option[1], LOAD_OPTION_ACTIVE, (UINT8 *)MS_USB_BOOT_PARM, sizeof (MS_USB_BOOT_PARM));
+  //Status |= CreateFvBootOption (&gMsBootPolicyFileGuid, MS_USB_BOOT, &Option[1], LOAD_OPTION_ACTIVE, (UINT8 *)MS_USB_BOOT_PARM, sizeof (MS_USB_BOOT_PARM));
+#if ENABLE_RAMDISK == 1
+  Status |= CreateFvBootOption (&gSamsungPkgEmbeddedRamdiskGuid, INTERNAL_WINPE_RAMDISK_NAME, &Option[2], LOAD_OPTION_ACTIVE, NULL, 0);
+#endif
 
   if (EFI_ERROR (Status)) {
     DEBUG ((DEBUG_ERROR, "%a Error creating defatult boot options\n", __FUNCTION__));

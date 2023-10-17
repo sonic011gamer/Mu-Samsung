@@ -24,6 +24,10 @@
   BUILD_TARGETS                  = DEBUG|RELEASE
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = a10Pkg/a10.fdf
+  ENABLE_RAMDISK                 = 0
+
+[BuildOptions.common]
+  *_*_*_CC_FLAGS = -DENABLE_RAMDISK=$(ENABLE_RAMDISK)
 
 [LibraryClasses.common]
   PlatformMemoryMapLib|a10Pkg/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.inf
