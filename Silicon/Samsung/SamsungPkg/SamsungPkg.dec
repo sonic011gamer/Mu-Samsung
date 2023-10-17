@@ -12,8 +12,19 @@
 
 [Protocols.common]
   gGpaProtocolGuid                    = { 0xc20139b1, 0x0306, 0x4a2e, { 0xa5, 0x44, 0xb8, 0xc8, 0xbf, 0xd0, 0x14, 0x31 } }
+  gExynosKeypadDeviceProtocolGuid     = { 0x12cf7c54, 0x4962, 0x4d2a, { 0x93, 0x48, 0x92, 0x7d, 0xf4, 0xa2, 0x35, 0xe5 } }
 
 [PcdsFixedAtBuild.common]
+  # Keypad
+  gSamsungPkgTokenSpaceGuid.PcdButtonsPinctrlBase|0|UINT32|0x0000a100
+  gSamsungPkgTokenSpaceGuid.PcdVolumeButtonsBankOffset|0|UINT32|0x0000a101
+  gSamsungPkgTokenSpaceGuid.PcdVolumeDownButtonGpaPin|0|UINT32|0x0000a102
+  gSamsungPkgTokenSpaceGuid.PcdVolumeUpButtonGpaPin|0|UINT32|0x0000a103
+  gSamsungPkgTokenSpaceGuid.PcdPowerButtonBankOffset|0|UINT32|0x0000a104
+  gSamsungPkgTokenSpaceGuid.PcdPowerButtonGpaPin|0|UINT32|0x0000a105
+  gSamsungPkgTokenSpaceGuid.PcdSpecialButton|FALSE|BOOLEAN|0x0000a106
+  gSamsungPkgTokenSpaceGuid.PcdSpecialButtonGpaPin|0|UINT32|0x0000a107
+
   # PNG File GUIDs
   gSamsungPkgTokenSpaceGuid.PcdNoBootOSFile|{ 0x09, 0xe1, 0x7a, 0x8a, 0x31, 0x12, 0x41, 0x21, 0xa4, 0x37, 0x18, 0x3c, 0xf1, 0x88, 0xee, 0x66}|VOID*|0x0000a200
 

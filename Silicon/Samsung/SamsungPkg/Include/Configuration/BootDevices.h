@@ -25,9 +25,9 @@ typedef struct {
 
 #define EFI_KEYPAD_DEVICE_GUID                                                 \
   {                                                                            \
-    0xD7F58A0E, 0xBED2, 0x4B5A,                                                \
+    0x12cf7c54, 0x4962, 0x4d2a,                                                \
     {                                                                          \
-      0xBB, 0x43, 0x8A, 0xB2, 0x3D, 0xD0, 0xE2, 0xB0                           \
+      0x93, 0x48, 0x92, 0x7d, 0xf4, 0xa2, 0x35, 0xe5                           \
     }                                                                          \
   }
 

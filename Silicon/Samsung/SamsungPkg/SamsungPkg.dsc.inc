@@ -200,6 +200,7 @@
 !endif
 
   PlatformThemeLib|SamsungPkg/Library/PlatformThemeLib/PlatformThemeLib.inf
+  KeypadDeviceImplLib|SamsungPkg/Library/KeypadDeviceImplLib/KeypadDeviceImplLib.inf
 
   #
   # Uncomment (and comment out the next line) For RealView Debugger. The Standard IO window
@@ -553,6 +554,10 @@
 
   # Custom Exynos Drivers
   SamsungPkg/Drivers/GpaDxe/GpaDxe.inf
+
+  # Keypad
+  SamsungPkg/Drivers/KeypadDxe/KeypadDxe.inf
+  SamsungPkg/Drivers/GenericKeypadDeviceDxe/GenericKeypadDeviceDxe.inf
 
   SamsungPkg/Drivers/GpioButtons/GpioButtons.inf
   SamsungPkg/Drivers/SecureBootProvisioningDxe/SecureBootProvisioningDxe.inf
