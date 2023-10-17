@@ -108,7 +108,7 @@ LibKeyUpdateKeyStatus(
     case KEYSTATE_PRESSED:
       if (IsPressed) {
         // keyrepeat
-        if (Context->Repeat && Context->Time >= MS2NS(200)) {
+        if (Context->Repeat && Context->Time >= MS2NS(100)) {
           KeypadReturnApi->PushEfikeyBufTail(KeypadReturnApi, &Context->KeyData);
           Context->Time   = 0;
           Context->Repeat = TRUE;
