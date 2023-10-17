@@ -25,7 +25,7 @@
 |Touchscreen||❌|
 |Clocks||❌|
 |UFS||❌|
-|Buttons||❌|
+|Buttons||✅|
 |USB||❌|
 |SD Card||❌|
 |ACPI||❌|
