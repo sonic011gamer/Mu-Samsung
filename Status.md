@@ -88,13 +88,13 @@
 
 ## Galaxy S9
 
-**WARNING: This Device has no Maintainer! The Status may not be correct anymore.**
+**WARNING: This Device has no Tester! The Status may not be correct anymore.**
 
 <img align="right" src="https://github.com/sonic011gamer/Mu-Samsung/blob/main/Pictures/Galaxy-S9.png" width="500" alt="Preview">
 
 **SoC: Exynos 9810 (E9810)** <br />
 **Codename: starlte** <br />
-**Maintainer: None** <br />
+**Maintainer: [Robotix22](https://github.com/Robotix22/)** <br />
 **Contibuters: None** <br />
 **Tester: None**
 
@@ -106,7 +106,7 @@
 |Touchscreen||❌|
 |Clocks||❌|
 |UFS||❌|
-|Buttons||❌|
+|Buttons||❔|
 |USB||❌|
 |SD Card||❌|
 |ACPI||❌|
