@@ -40,8 +40,8 @@
 [LibraryClasses.common]
   PlatformPeiLib|E9830Pkg/Library/PlatformPeiLib/PlatformPeiLib.inf
   PlatformPrePiLib|E9830Pkg/Library/PlatformPrePiLib/PlatformPrePiLib.inf
-  HwResetSystemLib|E9830Pkg/Library/ResetSystemLib/ResetSystemLib.inf
-  ResetSystemLib|E9830Pkg/Library/ResetSystemLib/ResetSystemLib.inf
+  HwResetSystemLib|ArmPkg/Library/ArmSmcPsciResetSystemLib/ArmSmcPsciResetSystemLib.inf
+  ResetSystemLib|ArmPkg/Library/ArmSmcPsciResetSystemLib/ArmSmcPsciResetSystemLib.inf
 
 [Components.common]
   E9830Pkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
