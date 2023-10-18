@@ -9,7 +9,7 @@
 #include <Library/DebugLib.h>
 
 #include <Protocol/KeypadDevice.h>
-#define USING_SPECIAL_BUTTON FixedPcdGetBool(PcdSpecialButton)
+
 typedef struct {
   KEY_CONTEXT EfiKeyContext;
   UINT32      PinctrlBase;
@@ -20,9 +20,9 @@ typedef struct {
 UINTN gBitmapScanCodes[BITMAP_NUM_WORDS(0x18)]    = {0};
 UINTN gBitmapUnicodeChars[BITMAP_NUM_WORDS(0x7f)] = {0};
 
-EFI_KEY_DATA gKeyDataPowerDown      = {.Key = {.UnicodeChar = (CHAR16)'s',}};
-EFI_KEY_DATA gKeyDataPowerUp        = {.Key = {.UnicodeChar = (CHAR16)'e',}};
-EFI_KEY_DATA gKeyDataPowerLongpress = {.Key = {.UnicodeChar = (CHAR16)' ',}};
+EFI_KEY_DATA gKeyDataPowerDown      = {.Key = {.ScanCode = SCAN_RIGHT,}};
+EFI_KEY_DATA gKeyDataPowerUp        = {.Key = {.ScanCode = SCAN_LEFT,}};
+EFI_KEY_DATA gKeyDataPowerLongpress = {.Key = {.ScanCode = SCAN_ESC,}};
 
 #define MS2NS(ms) (((UINT64)(ms)) * 1000000ULL)
 
@@ -116,13 +116,13 @@ LibKeyUpdateKeyStatus(
           // POWER, handle key combos
           if (Context->KeyData.Key.UnicodeChar == CHAR_CARRIAGE_RETURN) {
             if (KeyGetState(SCAN_DOWN, 0)) {
-              // report 's'
+              // report SCAN_RIGHT
               KeypadReturnApi->PushEfikeyBufTail(KeypadReturnApi, &gKeyDataPowerDown);
             } else if (KeyGetState(SCAN_UP, 0)) {
-              // report 'e'
+              // report SCNA_LEFT
               KeypadReturnApi->PushEfikeyBufTail(KeypadReturnApi, &gKeyDataPowerUp);
             } else {
-              // report spacebar
+              // report SCAN_ESC
               KeypadReturnApi->PushEfikeyBufTail(KeypadReturnApi, &gKeyDataPowerLongpress);
             }
           } else { // post first keyrepeat event
@@ -170,10 +170,9 @@ STATIC KEY_CONTEXT_PRIVATE KeyContextPower;
 STATIC KEY_CONTEXT_PRIVATE KeyContextVolumeUp;
 STATIC KEY_CONTEXT_PRIVATE KeyContextVolumeDown;
 
-
-#if USING_SPECIAL_BUTTON
+#if HAS_SPECIAL_BUTTON == 1
 STATIC KEY_CONTEXT_PRIVATE KeyContextSpecial;
-  STATIC KEY_CONTEXT_PRIVATE *KeyList[] = { &KeyContextVolumeDown, &KeyContextVolumeUp, &KeyContextPower, &KeyContextSpecial };
+STATIC KEY_CONTEXT_PRIVATE *KeyList[] = { &KeyContextVolumeDown, &KeyContextVolumeUp, &KeyContextPower, &KeyContextSpecial };
 #else
 STATIC KEY_CONTEXT_PRIVATE *KeyList[] = { &KeyContextVolumeDown, &KeyContextVolumeUp, &KeyContextPower};
 #endif
@@ -197,10 +196,10 @@ KEY_CONTEXT_PRIVATE *KeypadKeyCodeToKeyContext(UINT32 KeyCode)
   } else if (KeyCode == 116) {
     return &KeyContextPower;
   }
-#if USING_SPECIAL_BUTTON
+#if HAS_SPECIAL_BUTTON == 1
   else if (KeyCode == 117) {
-      return &KeyContextSpecial;
-    }
+    return &KeyContextSpecial;
+  }
 #endif
 
   return NULL;
@@ -237,12 +236,12 @@ KeypadDeviceImplConstructor(VOID)
   StaticContext->BankOffset  = FixedPcdGet32(PcdPowerButtonBankOffset);
   StaticContext->PinNum      = FixedPcdGet32(PcdPowerButtonGpaPin);
 
-#if USING_SPECIAL_BUTTON
-    /// Special Button
-    StaticContext              = KeypadKeyCodeToKeyContext(117);
-    StaticContext->PinctrlBase = FixedPcdGet32(PcdButtonsPinctrlBase);
-    StaticContext->BankOffset  = FixedPcdGet32(PcdVolumeButtonsBankOffset);
-    StaticContext->PinNum      = FixedPcdGet32(PcdSpecialButtonGpaPin);
+#if HAS_SPECIAL_BUTTON == 1
+  /// Special Button
+  StaticContext              = KeypadKeyCodeToKeyContext(117);
+  StaticContext->PinctrlBase = FixedPcdGet32(PcdButtonsPinctrlBase);
+  StaticContext->BankOffset  = FixedPcdGet32(PcdVolumeButtonsBankOffset);
+  StaticContext->PinNum      = FixedPcdGet32(PcdSpecialButtonGpaPin);
 #endif
 
   return RETURN_SUCCESS;
@@ -259,11 +258,11 @@ KeypadDeviceImplReset(KEYPAD_DEVICE_PROTOCOL *This)
   KeyContextVolumeUp.EfiKeyContext.KeyData.Key.ScanCode = SCAN_UP;
 
   LibKeyInitializeKeyContext(&KeyContextPower.EfiKeyContext);
-  KeyContextPower.EfiKeyContext.KeyData.Key.UnicodeChar = 0xd;
+  KeyContextPower.EfiKeyContext.KeyData.Key.UnicodeChar = 0xd;  // Enter
 
-#if USING_SPECIAL_BUTTON
-    LibKeyInitializeKeyContext(&KeyContextSpecial.EfiKeyContext);
-    KeyContextPower.EfiKeyContext.KeyData.Key.ScanCode = SCAN_ESC;
+#if HAS_SPECIAL_BUTTON == 1
+  LibKeyInitializeKeyContext(&KeyContextSpecial.EfiKeyContext);
+  KeyContextSpecial.EfiKeyContext.KeyData.Key.ScanCode = SCAN_ESC;
 #endif
 
   return EFI_SUCCESS;

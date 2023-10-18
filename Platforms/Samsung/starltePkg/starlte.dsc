@@ -25,6 +25,10 @@
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = starltePkg/starlte.fdf
   BROKEN_CNTFRQ_EL0              = 1
+  HAS_SPECIAL_BUTTON             = 1
+
+[BuildOptions.common]
+  *_*_*_CC_FLAGS = -DHAS_SPECIAL_BUTTON=$(HAS_SPECIAL_BUTTON)
 
 [BuildOptions.common]
   *_CLANG38_AARCH64_CC_FLAGS = -DBROKEN_CNTFRQ_EL0=$(BROKEN_CNTFRQ_EL0)
@@ -50,6 +54,15 @@
   gSamsungPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"G960F"
   gSamsungPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Galaxy_S9_G960F"
   gSamsungPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Galaxy S9"
+
+  # Buttons
+  gSamsungPkgTokenSpaceGuid.PcdButtonsPinctrlBase|0x14050000
+  gSamsungPkgTokenSpaceGuid.PcdVolumeButtonsBankOffset|0x0
+  gSamsungPkgTokenSpaceGuid.PcdVolumeDownButtonGpaPin|0x4
+  gSamsungPkgTokenSpaceGuid.PcdVolumeUpButtonGpaPin|0x3
+  gSamsungPkgTokenSpaceGuid.PcdPowerButtonBankOffset|0x40
+  gSamsungPkgTokenSpaceGuid.PcdPowerButtonGpaPin|0x4
+  gSamsungPkgTokenSpaceGuid.PcdSpecialButtonGpaPin|0x6
 
   # Simple FrameBuffer
   gSamsungPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|1440

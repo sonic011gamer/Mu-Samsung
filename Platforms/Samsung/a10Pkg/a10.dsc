@@ -24,6 +24,10 @@
   BUILD_TARGETS                  = DEBUG|RELEASE
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = a10Pkg/a10.fdf
+  HAS_SPECIAL_BUTTON             = 0
+
+[BuildOptions.common]
+  *_*_*_CC_FLAGS = -DHAS_SPECIAL_BUTTON=$(HAS_SPECIAL_BUTTON)
 
 [LibraryClasses.common]
   PlatformMemoryMapLib|a10Pkg/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.inf
@@ -60,8 +64,6 @@
   gSamsungPkgTokenSpaceGuid.PcdVolumeUpButtonGpaPin|0x5
   gSamsungPkgTokenSpaceGuid.PcdPowerButtonBankOffset|0x60
   gSamsungPkgTokenSpaceGuid.PcdPowerButtonGpaPin|0x7
-  gSamsungPkgTokenSpaceGuid.PcdSpecialButton|FALSE
-  gSamsungPkgTokenSpaceGuid.PcdSpecialButtonGpaPin|0x0
 
   # Simple FrameBuffer
   gSamsungPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|720

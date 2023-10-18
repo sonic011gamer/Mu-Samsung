@@ -24,6 +24,10 @@
   BUILD_TARGETS                  = DEBUG|RELEASE
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = beyond1ltePkg/beyond1lte.fdf
+  HAS_SPECIAL_BUTTON             = 1
+
+[BuildOptions.common]
+  *_*_*_CC_FLAGS = -DHAS_SPECIAL_BUTTON=$(HAS_SPECIAL_BUTTON)
 
 [LibraryClasses.common]
   PlatformMemoryMapLib|beyond1ltePkg/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.inf
@@ -60,7 +64,6 @@
   gSamsungPkgTokenSpaceGuid.PcdVolumeUpButtonGpaPin|0x3
   gSamsungPkgTokenSpaceGuid.PcdPowerButtonBankOffset|0x40
   gSamsungPkgTokenSpaceGuid.PcdPowerButtonGpaPin|0x4
-  gSamsungPkgTokenSpaceGuid.PcdSpecialButton|TRUE
   gSamsungPkgTokenSpaceGuid.PcdSpecialButtonGpaPin|0x6
 
   # Simple FrameBuffer
