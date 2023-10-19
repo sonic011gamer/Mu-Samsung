@@ -1,0 +1,24 @@
+## @file
+#  Exynos 9820 Power Management Unit Library
+#
+#  Copyright (c) 2015, Samsung Electronics Co., Ltd. All rights reserved.<BR>
+#
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+##
+[Defines]
+  INF_VERSION                    = 0x00010019
+  BASE_NAME                      = ExynosPmuLib
+  FILE_GUID                      = ce994aa5-6e83-420d-8641-8318502d3349
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = ExynosPmuLib
+
+[Sources]
+  ExynosPmuLib.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  SamsungPkg/SamsungPkg.dec
+
+[LibraryClasses]
+  IoLib

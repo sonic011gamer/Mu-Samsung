@@ -1,0 +1,1 @@
+Taken from: https://github.com/CruelKernel/samsung-exynos9820/blob/cruel-HVJ5-v5.3/drivers/soc/samsung/exynos-pmu.c

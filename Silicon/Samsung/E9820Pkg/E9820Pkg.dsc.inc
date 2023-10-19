@@ -38,8 +38,9 @@
 [LibraryClasses.common]
   PlatformPeiLib|E9820Pkg/Library/PlatformPeiLib/PlatformPeiLib.inf
   PlatformPrePiLib|E9820Pkg/Library/PlatformPrePiLib/PlatformPrePiLib.inf
-  HwResetSystemLib|ArmPkg/Library/ArmSmcPsciResetSystemLib/ArmSmcPsciResetSystemLib.inf
-  ResetSystemLib|ArmPkg/Library/ArmSmcPsciResetSystemLib/ArmSmcPsciResetSystemLib.inf
+  HwResetSystemLib|E9820Pkg/Library/ExynosResetSystemLib/ExynosResetSystemLib.inf
+  ResetSystemLib|E9820Pkg/Library/ExynosResetSystemLib/ExynosResetSystemLib.inf
+  ExynosPmuLib|E9820Pkg/Library/ExynosPmuLib/ExynosPmuLib.inf
 
 [Components.common]
   E9820Pkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
