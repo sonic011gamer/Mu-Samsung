@@ -221,13 +221,13 @@ KeypadDeviceImplConstructor(VOID)
   /// Volume Down Button
   StaticContext              = KeypadKeyCodeToKeyContext(114);
   StaticContext->PinctrlBase = FixedPcdGet32(PcdButtonsPinctrlBase);
-  StaticContext->BankOffset  = FixedPcdGet32(PcdVolumeButtonsBankOffset);
+  StaticContext->BankOffset  = FixedPcdGet32(PcdVolumeDownButtonBankOffset);
   StaticContext->PinNum      = FixedPcdGet32(PcdVolumeDownButtonGpaPin);
 
   /// Volume Up Button
   StaticContext              = KeypadKeyCodeToKeyContext(115);
   StaticContext->PinctrlBase = FixedPcdGet32(PcdButtonsPinctrlBase);
-  StaticContext->BankOffset  = FixedPcdGet32(PcdVolumeButtonsBankOffset);
+  StaticContext->BankOffset  = FixedPcdGet32(PcdVolumeUpButtonBankOffset);
   StaticContext->PinNum      = FixedPcdGet32(PcdVolumeUpButtonGpaPin);
 
   /// Power Button
