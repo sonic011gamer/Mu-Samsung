@@ -119,7 +119,7 @@ LibKeyUpdateKeyStatus(
               // report SCAN_RIGHT
               KeypadReturnApi->PushEfikeyBufTail(KeypadReturnApi, &gKeyDataPowerDown);
             } else if (KeyGetState(SCAN_UP, 0)) {
-              // report SCNA_LEFT
+              // report SCAN_LEFT
               KeypadReturnApi->PushEfikeyBufTail(KeypadReturnApi, &gKeyDataPowerUp);
             } else {
               // report SCAN_ESC
