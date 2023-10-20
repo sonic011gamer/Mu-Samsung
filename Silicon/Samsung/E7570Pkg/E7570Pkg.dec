@@ -1,0 +1,11 @@
+[Defines]
+  DEC_SPECIFICATION                   = 0x00010005
+  PACKAGE_NAME                        = E7570Pkg
+  PACKAGE_GUID                        = 5655fce0-6c0e-4c5e-8226-9b136eef8690
+  PACKAGE_VERSION                     = 0.1
+
+[Includes.common]
+  Include                               # Root include for the package
+
+[Guids.common]
+  gExynos7570PkgTokenSpaceGuid        = { 0x5655fce0, 0x6c0e, 0x4c5e, { 0x82, 0x26, 0x9b, 0x13, 0x6e, 0xef, 0x86, 0x90 } }

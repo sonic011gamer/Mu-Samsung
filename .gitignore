@@ -4,9 +4,6 @@ Conf/
 BootShim/*.bin
 BootShim/*.elf
 ImageResources/bootpayload.bin
-Platforms/Samsung/starltePkg/__pycache__/
-Platforms/Samsung/beyond1ltePkg/__pycache__/
-Platforms/Samsung/x1sPkg/__pycache__/
-Platforms/Samsung/a10Pkg/__pycache__/
+**/__pycache__
 Mu-*.img
 Mu-*.tar

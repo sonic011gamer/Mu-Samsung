@@ -1,0 +1,23 @@
+#FILE FREEFORM = 7E374E25-8E01-4FEE-87F2-390C23C606CD {
+#  SECTION RAW = Exynos7885Pkg/AcpiTables/APIC.aml
+#  SECTION RAW = Exynos7885Pkg/AcpiTables/APIC.UniCore.aml
+#  SECTION RAW = Exynos7885Pkg/AcpiTables/BERT.aml
+#  SECTION RAW = Exynos7885Pkg/AcpiTables/BGRT.aml
+#  SECTION RAW = Exynos7885Pkg/AcpiTables/CSRT.aml
+#  SECTION RAW = Exynos7885Pkg/AcpiTables/DBG2.aml
+#  SECTION RAW = beyond1ltePkg/AcpiTables/DSDT.aml
+#  SECTION RAW = Exynos7885Pkg/AcpiTables/FACP.aml
+#  SECTION RAW = Exynos7885Pkg/AcpiTables/FPDT.aml
+#  SECTION RAW = Exynos7885Pkg/AcpiTables/GTDT.aml
+#  SECTION RAW = Exynos7885Pkg/AcpiTables/IORT.aml
+#  SECTION RAW = Exynos7885Pkg/AcpiTables/MCFG.aml
+#  SECTION RAW = Exynos7885Pkg/AcpiTables/MSDM.aml
+#  SECTION RAW = Exynos7885Pkg/AcpiTables/PPTT.aml
+#  SECTION RAW = Exynos7885Pkg/AcpiTables/SPCR.aml
+#  SECTION RAW = Exynos7885Pkg/AcpiTables/TPM2.aml
+#  SECTION RAW = Exynos7885Pkg/AcpiTables/XSDT.aml
+#  SECTION RAW = SamsungPkg/AcpiTables/SSDT.aml
+#  SECTION RAW = SamsungPkg/AcpiTables/TPMDev.dat
+#  SECTION RAW = SamsungPkg/AcpiTables/SoftwareTpm2Table.aml
+#  SECTION UI = "AcpiTables"
+#}
