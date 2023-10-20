@@ -24,8 +24,9 @@
 
 [FixedPcd]
   gSamsungPkgTokenSpaceGuid.PcdButtonsPinctrlBase
-  gSamsungPkgTokenSpaceGuid.PcdVolumeButtonsBankOffset
+  gSamsungPkgTokenSpaceGuid.PcdVolumeDownButtonBankOffset
   gSamsungPkgTokenSpaceGuid.PcdVolumeDownButtonGpaPin
+  gSamsungPkgTokenSpaceGuid.PcdVolumeUpButtonBankOffset
   gSamsungPkgTokenSpaceGuid.PcdVolumeUpButtonGpaPin
   gSamsungPkgTokenSpaceGuid.PcdPowerButtonBankOffset
   gSamsungPkgTokenSpaceGuid.PcdPowerButtonGpaPin
