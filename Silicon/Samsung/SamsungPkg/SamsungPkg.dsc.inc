@@ -200,7 +200,9 @@
 !endif
 
   PlatformThemeLib|SamsungPkg/Library/PlatformThemeLib/PlatformThemeLib.inf
+!if $(CUSTOM_KEYPAD_IMPL) == 0
   KeypadDeviceImplLib|SamsungPkg/Library/KeypadDeviceImplLib/KeypadDeviceImplLib.inf
+!endif
 
   #
   # Uncomment (and comment out the next line) For RealView Debugger. The Standard IO window

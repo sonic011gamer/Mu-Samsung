@@ -12,6 +12,7 @@
 # SoC Defines
 [Defines]
   USE_PHYSICAL_TIMER             = 1
+  CUSTOM_KEYPAD_IMPL             = 1
 
 [BuildOptions.common]
   *_*_*_CC_FLAGS = -march=armv8.2-a+crypto+rcpc
@@ -40,6 +41,7 @@
   PlatformPrePiLib|E7570Pkg/Library/PlatformPrePiLib/PlatformPrePiLib.inf
   HwResetSystemLib|E7570Pkg/Library/ResetSystemLib/ResetSystemLib.inf
   ResetSystemLib|E7570Pkg/Library/ResetSystemLib/ResetSystemLib.inf
+  KeypadDeviceImplLib|E7570Pkg/Library/KeypadDeviceImplLib/KeypadDeviceImplLib.inf
 
 [Components.common]
   E7570Pkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
