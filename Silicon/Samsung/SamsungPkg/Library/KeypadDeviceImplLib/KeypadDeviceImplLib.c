@@ -240,7 +240,7 @@ KeypadDeviceImplConstructor(VOID)
   /// Special Button
   StaticContext              = KeypadKeyCodeToKeyContext(117);
   StaticContext->PinctrlBase = FixedPcdGet32(PcdButtonsPinctrlBase);
-  StaticContext->BankOffset  = FixedPcdGet32(PcdVolumeButtonsBankOffset);
+  StaticContext->BankOffset  = FixedPcdGet32(PcdSpecialButtonBankOffset);
   StaticContext->PinNum      = FixedPcdGet32(PcdSpecialButtonGpaPin);
 #endif
 

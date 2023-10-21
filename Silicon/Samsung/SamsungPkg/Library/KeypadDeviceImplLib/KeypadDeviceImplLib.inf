@@ -30,4 +30,5 @@
   gSamsungPkgTokenSpaceGuid.PcdVolumeUpButtonGpaPin
   gSamsungPkgTokenSpaceGuid.PcdPowerButtonBankOffset
   gSamsungPkgTokenSpaceGuid.PcdPowerButtonGpaPin
+  gSamsungPkgTokenSpaceGuid.PcdSpecialButtonBankOffset
   gSamsungPkgTokenSpaceGuid.PcdSpecialButtonGpaPin

@@ -33,12 +33,21 @@
   DebugLib
   MemoryAllocationLib
   UefiBootServicesTableLib
+  IoLib
   UefiDriverEntryPoint
   DevicePathLib
 
+[FixedPcd]
+  gSamsungPkgTokenSpaceGuid.PcdButtonsPinctrlBase
+  gSamsungPkgTokenSpaceGuid.PcdVolumeDownButtonBankOffset
+  gSamsungPkgTokenSpaceGuid.PcdVolumeDownButtonGpaPin
+  gSamsungPkgTokenSpaceGuid.PcdVolumeUpButtonBankOffset
+  gSamsungPkgTokenSpaceGuid.PcdVolumeUpButtonGpaPin
+
 [Protocols]
   gMsButtonServicesProtocolGuid          #PRODUCES
-  gEfiSimpleTextInputExProtocolGuid      #Consumes
+  gEfiSimpleTextInputExProtocolGuid      #CONSUMES
+  gExynosKeypadDeviceProtocolGuid        #CONSUMES
 
 [Depex]
   gEfiSimpleTextInputExProtocolGuid
