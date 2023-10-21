@@ -922,8 +922,6 @@ DeviceBootManagerPriorityBoot (
   UEFIShell     = MsBootPolicyLibUEFIShell ();
   MsBootPolicyLibClearBootRequests ();
 
-  UEFIShell = TRUE;
-
   // There are four cases:
   //   1.  Nothing pressed.             return EFI_NOT_FOUND
   //   2.  FrontPageBoot                load FrontPage
