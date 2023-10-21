@@ -15,6 +15,7 @@ typedef struct {
   UINT32      PinctrlBase;
   UINT32      BankOffset;
   UINT32      PinNum;
+  UINT32      Pmic_key;
 } KEY_CONTEXT_PRIVATE;
 
 UINTN gBitmapScanCodes[BITMAP_NUM_WORDS(0x18)]    = {0};
@@ -169,13 +170,7 @@ LibKeyUpdateKeyStatus(
 STATIC KEY_CONTEXT_PRIVATE KeyContextPower;
 STATIC KEY_CONTEXT_PRIVATE KeyContextVolumeUp;
 STATIC KEY_CONTEXT_PRIVATE KeyContextVolumeDown;
-
-#if HAS_SPECIAL_BUTTON == 1
-STATIC KEY_CONTEXT_PRIVATE KeyContextSpecial;
-STATIC KEY_CONTEXT_PRIVATE *KeyList[] = { &KeyContextVolumeDown, &KeyContextVolumeUp, &KeyContextPower, &KeyContextSpecial };
-#else
 STATIC KEY_CONTEXT_PRIVATE *KeyList[] = { &KeyContextVolumeDown, &KeyContextVolumeUp, &KeyContextPower};
-#endif
 
 STATIC
 VOID
@@ -184,6 +179,7 @@ KeypadInitializeKeyContextPrivate(KEY_CONTEXT_PRIVATE *Context)
   Context->PinctrlBase = 0;
   Context->BankOffset  = 0;
   Context->PinNum      = 0;
+  Context->Pmic_key    = 0;
 }
 
 STATIC
@@ -196,11 +192,6 @@ KEY_CONTEXT_PRIVATE *KeypadKeyCodeToKeyContext(UINT32 KeyCode)
   } else if (KeyCode == 116) {
     return &KeyContextPower;
   }
-#if HAS_SPECIAL_BUTTON == 1
-  else if (KeyCode == 117) {
-    return &KeyContextSpecial;
-  }
-#endif
 
   return NULL;
 }
@@ -230,19 +221,14 @@ KeypadDeviceImplConstructor(VOID)
   StaticContext->BankOffset  = FixedPcdGet32(PcdVolumeUpButtonBankOffset);
   StaticContext->PinNum      = FixedPcdGet32(PcdVolumeUpButtonGpaPin);
 
+
   /// Power Button
   StaticContext              = KeypadKeyCodeToKeyContext(116);
+  StaticContext->Pmic_key    = 1;
   StaticContext->PinctrlBase = FixedPcdGet32(PcdButtonsPinctrlBase);
   StaticContext->BankOffset  = FixedPcdGet32(PcdPowerButtonBankOffset);
   StaticContext->PinNum      = FixedPcdGet32(PcdPowerButtonGpaPin);
 
-#if HAS_SPECIAL_BUTTON == 1
-  /// Special Button
-  StaticContext              = KeypadKeyCodeToKeyContext(117);
-  StaticContext->PinctrlBase = FixedPcdGet32(PcdButtonsPinctrlBase);
-  StaticContext->BankOffset  = FixedPcdGet32(PcdSpecialButtonBankOffset);
-  StaticContext->PinNum      = FixedPcdGet32(PcdSpecialButtonGpaPin);
-#endif
 
   return RETURN_SUCCESS;
 }
@@ -259,11 +245,6 @@ KeypadDeviceImplReset(KEYPAD_DEVICE_PROTOCOL *This)
 
   LibKeyInitializeKeyContext(&KeyContextPower.EfiKeyContext);
   KeyContextPower.EfiKeyContext.KeyData.Key.UnicodeChar = 0xd;  // Enter
-
-#if HAS_SPECIAL_BUTTON == 1
-  LibKeyInitializeKeyContext(&KeyContextSpecial.EfiKeyContext);
-  KeyContextSpecial.EfiKeyContext.KeyData.Key.ScanCode = SCAN_ESC;
-#endif
 
   return EFI_SUCCESS;
 }
@@ -282,11 +263,14 @@ KeypadDeviceImplGetKeys(
 
     IsPressed = FALSE;
 
-  	UINT32 PinAddr = ((Context->PinctrlBase + Context->BankOffset) + 0x4);
-    UINT32 PinState = MmioRead32(PinAddr);
-
-    if (!(PinState & (1 << Context->PinNum))) {
-      IsPressed = TRUE;
+    if(0/*Context->Pmic_key*/){
+      // TODO: read key from S2MPU06 pmic
+    } else{
+      UINT32 PinAddr = ((Context->PinctrlBase + Context->BankOffset) + 0x4);
+      UINT32 PinState = MmioRead32(PinAddr);
+      if (!(PinState & (1 << Context->PinNum))) {
+        IsPressed = TRUE;
+      }
     }
 
     LibKeyUpdateKeyStatus(&Context->EfiKeyContext, KeypadReturnApi, IsPressed, Delta);
