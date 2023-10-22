@@ -1,5 +1,5 @@
 /** @file
-  SMBIOS Table for Qualcomm Snapdragon Platforms
+  SMBIOS Table for Samsung Exynos 7570 Platforms
   Derived from EmulatorPkg package
 
   Note SMBIOS 2.7.1 Required structures:

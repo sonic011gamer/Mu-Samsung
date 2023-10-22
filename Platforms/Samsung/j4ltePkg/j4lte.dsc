@@ -16,7 +16,7 @@
 ################################################################################
 [Defines]
   PLATFORM_NAME                  = j4lte
-  PLATFORM_GUID                  = 93cf4d7c-0441-4a40-891b-4b5f8d4a34ef
+  PLATFORM_GUID                  = 32d17ab7-6588-46aa-9f40-ff4a749e0971
   PLATFORM_VERSION               = 0.1
   DSC_SPECIFICATION              = 0x00010005
   OUTPUT_DIRECTORY               = Build/j4ltePkg
@@ -60,6 +60,7 @@
   gSamsungPkgTokenSpaceGuid.PcdVolumeUpButtonGpaPin|0x7
   gSamsungPkgTokenSpaceGuid.PcdPowerButtonBankOffset|0x40
   gSamsungPkgTokenSpaceGuid.PcdPowerButtonGpaPin|0x4      # TODO: Write pmic power keys driver
+
   # Simple FrameBuffer
   gSamsungPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|720
   gSamsungPkgTokenSpaceGuid.PcdMipiFrameBufferHeight|1280

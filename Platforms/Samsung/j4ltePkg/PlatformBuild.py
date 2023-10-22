@@ -1,5 +1,5 @@
 # @file
-# Script to Build Galaxy S10 UEFI firmware
+# Script to Build Galaxy J4 UEFI firmware
 #
 # Copyright (c) Microsoft Corporation.
 # SPDX-License-Identifier: BSD-2-Clause-Patent
