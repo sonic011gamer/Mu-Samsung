@@ -324,3 +324,82 @@
 |Vibration||❌|
 
 </td></tr> </table>
+
+## Galaxy J4
+
+<img align="right" src="https://github.com/sonic011gamer/Mu-Samsung/blob/main/Pictures/Galaxy-J4.png" width="500" alt="Preview">
+
+**SoC: Exynos 7570 (E7570)** <br />
+**Codename: j4lte** <br />
+**Maintainer: [predefine](https://github.com/predefine/)** <br />
+**Contibuter: [Vicente Cortes](https://github.com/vicenteicc2008)** <br />
+**Testers: [predefine](https://github.com/predefine/), [Vicente Cortes](https://github.com/vicenteicc2008)**
+
+### UEFI Status
+
+|Feature|Description|State|
+|:------|:----------|:---:|
+|Display||✅|
+|Touchscreen||❌|
+|Clocks||❌|
+|eMMC||❌|
+|Buttons|Pwr Key not aviable|⚠️|
+|USB||❌|
+|SD Card||❌|
+|ACPI||❌|
+
+### OS Status
+
+<table>
+<tr><th>Windows</th><th>Linux</th></tr>
+<tr><td>
+
+|Feature|Description|State|
+|:------|:----------|:---:|
+|Boot||❌|
+|UFS||❌|
+|Buttons||❌|
+|Sensors||❌|
+|Battery||❌|
+|USB||❌|
+|Charging||❌|
+|WLAN||❌|
+|CPU||❌|
+|Touchscreen||❌|
+|Bluetooth||❌|
+|GPS||❌|
+|Audio||❌|
+|GPU||❌|
+|Camera||❌|
+|NFC||❌|
+|Fingerprint||❌|
+|Mobile Data||❌|
+|Display||❌|
+|Vibration||❌|
+
+</td><td>
+
+|Feature|Description|State|
+|:------|:----------|:---:|
+|Boot||❌|
+|UFS||❌|
+|Buttons||❌|
+|Sensors||❌|
+|Battery||❌|
+|USB||❌|
+|Charging||❌|
+|WLAN||❌|
+|CPU||❌|
+|Touchscreen||❌|
+|Bluetooth||❌|
+|GPS||❌|
+|Audio||❌|
+|GPU||❌|
+|Camera||❌|
+|NFC||❌|
+|Fingerprint||❌|
+|Mobile Data||❌|
+|Display||❌|
+|Vibration||❌|
+
+</td></tr> </table>
