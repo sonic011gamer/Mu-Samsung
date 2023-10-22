@@ -4,6 +4,6 @@ Conf/
 BootShim/*.bin
 BootShim/*.elf
 ImageResources/bootpayload.bin
-**/__pycache__
+*/*/*/__pycache__
 Mu-*.img
 Mu-*.tar
