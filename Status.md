@@ -278,7 +278,7 @@
 |Feature|Description|State|
 |:------|:----------|:---:|
 |Boot||❌|
-|UFS||❌|
+|eMMC||❌|
 |Buttons||❌|
 |Sensors||❌|
 |Battery||❌|
@@ -303,7 +303,7 @@
 |Feature|Description|State|
 |:------|:----------|:---:|
 |Boot||❌|
-|UFS||❌|
+|eMMC||❌|
 |Buttons||❌|
 |Sensors||❌|
 |Battery||❌|
@@ -357,7 +357,7 @@
 |Feature|Description|State|
 |:------|:----------|:---:|
 |Boot||❌|
-|UFS||❌|
+|eMMC||❌|
 |Buttons||❌|
 |Sensors||❌|
 |Battery||❌|
@@ -382,7 +382,7 @@
 |Feature|Description|State|
 |:------|:----------|:---:|
 |Boot||❌|
-|UFS||❌|
+|eMMC||❌|
 |Buttons||❌|
 |Sensors||❌|
 |Battery||❌|
