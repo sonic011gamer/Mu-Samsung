@@ -1,0 +1,11 @@
+[Defines]
+  DEC_SPECIFICATION                   = 0x00010005
+  PACKAGE_NAME                        = a10
+  PACKAGE_GUID                        = f54e021f-3f08-4971-9860-56892e7e78cb
+  PACKAGE_VERSION                     = 0.1
+
+[Includes.common]
+  Include                               # Root include for the package
+
+[Guids.common]
+  gc1sTokenSpaceGuid                  = { 0xf54e021f, 0x3f08, 0x4971, { 0x98, 0x60, 0x56, 0x89, 0x2e, 0x7e, 0x78, 0xcb } }
