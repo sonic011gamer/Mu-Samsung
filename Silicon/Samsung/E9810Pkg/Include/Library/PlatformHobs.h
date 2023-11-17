@@ -58,6 +58,14 @@ typedef struct {
   LOAD_LIB    LoadLib;
 } ShLibLoaderType;
 
+#define EFI_INFORMATION_BLOCK_GUID                                             \
+  {                                                                            \
+    0x90a49afd, 0x422f, 0x08ae,                                                \
+    {                                                                          \
+      0x96, 0x11, 0xe7, 0x88, 0xd3, 0x80, 0x48, 0x45                           \
+    }                                                                          \
+  }
+
 #define EFI_SHIM_LIBRARY_GUID                                                  \
   {                                                                            \
     0xbedaeabc, 0x5e70, 0x4d66,                                                \
@@ -66,11 +74,11 @@ typedef struct {
     }                                                                          \
   }
 
-#define EFI_INFORMATION_BLOCK_GUID                                             \
+#define EFI_FV_DECOMPRESS_GUID                                                 \
   {                                                                            \
-    0x90a49afd, 0x422f, 0x08ae,                                                \
+    0x12dbd93d, 0x402a, 0x416e,                                                \
     {                                                                          \
-      0x96, 0x11, 0xe7, 0x88, 0xd3, 0x80, 0x48, 0x45                           \
+      0xec, 0x20, 0x5f, 0x80, 0xcf, 0x5f, 0x7f, 0xe7                           \
     }                                                                          \
   }
 

@@ -11,22 +11,6 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 #include <Library/UefiBootManagerLib.h>
 
 /**
-  Return the boot option corresponding to the Slot Switch App.
-
-  @param BootOption     Return a created Slot Switch App with the parameter passed
-
-  @retval EFI_SUCCESS   The Slot Switch App is successfully returned.
-  @retval Status        Return status of gRT->SetVariable (). BootOption still points
-                        to the Slot Switch App even the Status is not EFI_SUCCESS.
-**/
-EFI_STATUS
-EFIAPI
-MsBootOptionsLibSlotSwitchApp (
-  IN OUT EFI_BOOT_MANAGER_LOAD_OPTION  *BootOption,
-  IN     CHAR8                         *Parameter
-  );
-
-/**
   Return the boot option corresponding to the UEFI Shell.
 
   @param BootOption     Return a created Slot UEFI Shell with the parameter passed

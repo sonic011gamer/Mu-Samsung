@@ -1,13 +1,18 @@
-#ifndef __LIBRARY_KEYPAD_DEVICE_IMPL_H__
-#define __LIBRARY_KEYPAD_DEVICE_IMPL_H__
+#ifndef _KEYPAD_DEVICE_IMPL_LIB_H_
+#define _KEYPAD_DEVICE_IMPL_LIB_H_
 
 #include <Protocol/KeypadDevice.h>
 
-EFI_STATUS EFIAPI KeypadDeviceImplReset(KEYPAD_DEVICE_PROTOCOL *This);
-EFI_STATUS        KeypadDeviceImplGetKeys(
-           KEYPAD_DEVICE_PROTOCOL *This, KEYPAD_RETURN_API *KeypadReturnApi,
-           UINT64 Delta);
+EFI_STATUS
+EFIAPI
+KeypadDeviceImplReset(KEYPAD_DEVICE_PROTOCOL *This);
 
+EFI_STATUS
+KeypadDeviceImplGetKeys(
+  KEYPAD_DEVICE_PROTOCOL *This,
+  KEYPAD_RETURN_API *KeypadReturnApi,
+  UINT64 Delta
+  );
 
 typedef enum {
   KEYSTATE_RELEASED,
@@ -32,4 +37,4 @@ typedef struct {
   BOOLEAN Longpress;
 } KEY_CONTEXT;
 
-#endif
+#endif /* _KEYPAD_DEVICE_IMPL_LIB_H_ */

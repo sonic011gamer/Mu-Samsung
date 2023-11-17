@@ -86,8 +86,8 @@ READ_LOCK_STATUS   = TRUE
 
   # Secure Boot Key Enroll
   INF SecurityPkg/VariableAuthenticated/SecureBootConfigDxe/SecureBootConfigDxe.inf
-  #INF SamsungPkg/Drivers/SecureBootProvisioningDxe/SecureBootProvisioningDxe.inf
-  #INF SamsungPkg/Drivers/SystemIntegrityPolicyProvisioningDxe/SystemIntegrityPolicyProvisioningDxe.inf
+  INF SamsungPkg/Drivers/SecureBootProvisioningDxe/SecureBootProvisioningDxe.inf
+  INF SamsungPkg/Drivers/SystemIntegrityPolicyProvisioningDxe/SystemIntegrityPolicyProvisioningDxe.inf
 
   INF EmbeddedPkg/Drivers/VirtualKeyboardDxe/VirtualKeyboardDxe.inf
 
@@ -117,11 +117,6 @@ READ_LOCK_STATUS   = TRUE
   !include SamsungPkg/Frontpage.fdf.inc
 
   INF DfciPkg/AuthManagerNull/AuthManagerNull.inf
-
-  FILE FREEFORM = PCD(gOemPkgTokenSpaceGuid.PcdLogoFile) {
-    SECTION RAW = a10Pkg/Include/Resources/BootLogo.png
-    SECTION UI = "Logo"
-  }
 
   # TODO: Make this Image for every single Device
   FILE FREEFORM = PCD(gMsCorePkgTokenSpaceGuid.PcdRegulatoryGraphicFileGuid) {

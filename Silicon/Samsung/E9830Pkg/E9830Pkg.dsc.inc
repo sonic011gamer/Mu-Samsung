@@ -11,10 +11,11 @@
 
 # SoC Defines
 [Defines]
-  USE_PHYSICAL_TIMER = 1
+  USE_PHYSICAL_TIMER          = 1
+  PRECOMPILED_CRYPTO_BINARIES = 0
 
 [BuildOptions.common]
-  *_*_*_CC_FLAGS = -march=armv8.2-a+crypto+rcpc
+  *_*_AARCH64_CC_FLAGS = -march=armv8.2-a+crypto+rcpc
 
 [PcdsFixedAtBuild.common]
   gArmTokenSpaceGuid.PcdArmArchTimerFreqInHz|26000000
@@ -26,10 +27,8 @@
   gArmTokenSpaceGuid.PcdGicRedistributorsBase|0x10102000
   gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x10100000
 
-
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x00009830
   gEmbeddedTokenSpaceGuid.PcdInterruptBaseAddress|0x10100000
-
 
   gSamsungPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Exynos (TM) 9830 @ 2.73 GHz"
   gSamsungPkgTokenSpaceGuid.PcdSmbiosProcessorRetailModel|"E9830"

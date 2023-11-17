@@ -23,7 +23,7 @@
   MdePkg/MdePkg.dec
   MdeModulePkg/MdeModulePkg.dec
   EmbeddedPkg/EmbeddedPkg.dec
-  E7885Pkg/E7885Pkg.dec
+  E9830Pkg/E9830Pkg.dec
   SamsungPkg/SamsungPkg.dec
 
 [LibraryClasses]

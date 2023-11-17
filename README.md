@@ -19,7 +19,7 @@ This repo brings UEFI Firmware on your Device (If supported) to boot OSs like Wi
 ## Credits
 
 Thanks to [Gustave Monce](https://github.com/gus33000) for his [SurfaceDuoPkg](https://github.com/WOA-Project/SurfaceDuoPkg), without it this repo would probally not exist. <br />
-Also thanks to [Robotix22](https://github.com/Robotix22) for his Mu-Qcom base. Without it, I would've had to re-port everything from my lost repo (not fun).
+Also thanks to [Robotix22](https://github.com/Robotix22) for his [Mu-Qcom](https://github.com/Robotix22/Mu-Qcom) base. Without it, I would've had to re-port everything from my lost repo (not fun).
 
 ## License
 

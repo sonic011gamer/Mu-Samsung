@@ -19,15 +19,17 @@
   PLATFORM_GUID                  = 93cf4d7c-0441-4a40-891b-4b5f8d4a34ef
   PLATFORM_VERSION               = 0.1
   DSC_SPECIFICATION              = 0x00010005
-  OUTPUT_DIRECTORY               = Build/beyond1ltePkg
+  OUTPUT_DIRECTORY               = Build/beyond1ltePkg-$(ARCH)
   SUPPORTED_ARCHITECTURES        = AARCH64
   BUILD_TARGETS                  = DEBUG|RELEASE
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = beyond1ltePkg/beyond1lte.fdf
+  BROKEN_CNTFRQ_EL0              = 0
+  DISPLAY_USES_RGBA              = 0
   HAS_SPECIAL_BUTTON             = 1
 
 [BuildOptions.common]
-  *_*_*_CC_FLAGS = -DHAS_SPECIAL_BUTTON=$(HAS_SPECIAL_BUTTON)
+  *_*_*_CC_FLAGS = -DDISPLAY_USES_RGBA=$(DISPLAY_USES_RGBA) -DHAS_SPECIAL_BUTTON=$(HAS_SPECIAL_BUTTON) -DBROKEN_CNTFRQ_EL0=$(BROKEN_CNTFRQ_EL0)
 
 [LibraryClasses.common]
   PlatformMemoryMapLib|beyond1ltePkg/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.inf

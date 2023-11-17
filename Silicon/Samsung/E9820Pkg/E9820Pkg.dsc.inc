@@ -11,10 +11,11 @@
 
 # SoC Defines
 [Defines]
-  USE_PHYSICAL_TIMER = 1
+  USE_PHYSICAL_TIMER          = 1
+  PRECOMPILED_CRYPTO_BINARIES = 0
 
 [BuildOptions.common]
-  *_*_*_CC_FLAGS = -march=armv8.2-a+crypto+rcpc
+  *_*_AARCH64_CC_FLAGS = -march=armv8.2-a+crypto+rcpc
 
 [PcdsFixedAtBuild.common]
   gArmTokenSpaceGuid.PcdArmArchTimerFreqInHz|26000000
@@ -38,8 +39,8 @@
 [LibraryClasses.common]
   PlatformPeiLib|E9820Pkg/Library/PlatformPeiLib/PlatformPeiLib.inf
   PlatformPrePiLib|E9820Pkg/Library/PlatformPrePiLib/PlatformPrePiLib.inf
-  HwResetSystemLib|E9820Pkg/Library/ExynosResetSystemLib/ExynosResetSystemLib.inf
-  ResetSystemLib|E9820Pkg/Library/ExynosResetSystemLib/ExynosResetSystemLib.inf
+  HwResetSystemLib|E9820Pkg/Library/ResetSystemLib/ResetSystemLib.inf
+  ResetSystemLib|E9820Pkg/Library/ResetSystemLib/ResetSystemLib.inf
   ExynosPmuLib|E9820Pkg/Library/ExynosPmuLib/ExynosPmuLib.inf
 
 [Components.common]

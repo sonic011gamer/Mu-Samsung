@@ -1,5 +1,5 @@
 # @file
-# Script to Build Galaxy S20 UEFI firmware
+# Script to Build Galaxy S20 5G UEFI firmware
 #
 # Copyright (c) Microsoft Corporation.
 # SPDX-License-Identifier: BSD-2-Clause-Patent
@@ -68,7 +68,7 @@ class SettingsManager(UpdateSettingsManager, SetupSettingsManager, PrEvalSetting
 
     def GetRequiredSubmodules(self):
         """Return iterable containing RequiredSubmodule objects.
-
+        
         !!! note
             If no RequiredSubmodules return an empty iterable
         """

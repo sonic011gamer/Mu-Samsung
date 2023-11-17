@@ -16,22 +16,20 @@
 ################################################################################
 [Defines]
   PLATFORM_NAME                  = starlte
-  PLATFORM_GUID                  = a1b48372-32df-4294-be88-10bf0ee9f11b
+  PLATFORM_GUID                  = 93cf4d7c-0441-4a40-891b-4b5f8d4a34ef
   PLATFORM_VERSION               = 0.1
   DSC_SPECIFICATION              = 0x00010005
-  OUTPUT_DIRECTORY               = Build/starltePkg
+  OUTPUT_DIRECTORY               = Build/starltePkg-$(ARCH)
   SUPPORTED_ARCHITECTURES        = AARCH64
   BUILD_TARGETS                  = DEBUG|RELEASE
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = starltePkg/starlte.fdf
   BROKEN_CNTFRQ_EL0              = 1
+  DISPLAY_USES_RGBA              = 0
   HAS_SPECIAL_BUTTON             = 1
 
 [BuildOptions.common]
-  *_*_*_CC_FLAGS = -DHAS_SPECIAL_BUTTON=$(HAS_SPECIAL_BUTTON)
-
-[BuildOptions.common]
-  *_CLANG38_AARCH64_CC_FLAGS = -DBROKEN_CNTFRQ_EL0=$(BROKEN_CNTFRQ_EL0)
+  *_*_*_CC_FLAGS = -DDISPLAY_USES_RGBA=$(DISPLAY_USES_RGBA) -DHAS_SPECIAL_BUTTON=$(HAS_SPECIAL_BUTTON) -DBROKEN_CNTFRQ_EL0=$(BROKEN_CNTFRQ_EL0)
 
 [LibraryClasses.common]
   PlatformMemoryMapLib|starltePkg/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.inf

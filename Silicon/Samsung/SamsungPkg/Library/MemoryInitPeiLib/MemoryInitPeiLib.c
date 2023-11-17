@@ -92,12 +92,24 @@ MemoryPeim (
     switch (MemoryDescriptorEx->HobOption) {
     case AddMem:
     case AddDev:
+    case HobOnlyNoCacheSetting:
+    case AddDynamicMem:
     case AllocOnly:
       AddHob(MemoryDescriptorEx);
       break;
     case NoHob:
     default:
       goto update;
+    }
+
+    if (MemoryDescriptorEx->HobOption == HobOnlyNoCacheSetting) {
+      MemoryDescriptorEx++;
+      continue;
+    }
+
+    if (MemoryDescriptorEx->HobOption == AddDynamicMem) {
+      MemoryDescriptorEx++;
+      continue;
     }
 
   update:

@@ -1,5 +1,5 @@
 ## @file
-# Samsung Ms Platform Devices Library
+# Qualcomm Ms Platform Devices Library
 #
 # Copyright (C) Microsoft Corporation. All rights reserved.
 # SPDX-License-Identifier: BSD-2-Clause-Patent
@@ -18,7 +18,7 @@
 #
 
 [Sources]
-  MsPlatformDevicesLib.c
+ MsPlatformDevicesLib.c
 
 [Packages]
   MdePkg/MdePkg.dec

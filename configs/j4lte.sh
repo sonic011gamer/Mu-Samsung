@@ -1,11 +1,11 @@
 #!/bin/bash
 
-cat ./BootShim/BootShim.bin "./Build/${TARGET_DEVICE}Pkg/${_TARGET_BUILD_MODE}_CLANG38/FV/${TARGET_DEVICE^^}_UEFI.fd" > ./ImageResources/bootpayload.bin||exit 1
+cat ./BootShim/AARCH64/BootShim.bin "./Build/j4ltePkg-AARCH64/${_TARGET_BUILD_MODE}_CLANG38/FV/J4LTE_UEFI.fd" > ./ImageResources/bootpayload.bin||exit 1
 
 python3 ./ImageResources/mkbootimg.py \
 	--kernel ./ImageResources/bootpayload.bin \
 	--ramdisk ./ImageResources/ramdisk \
-	--dtb "./ImageResources/DTBs/${TARGET_DEVICE}.dtb" \
+	--dtb "./ImageResources/DTBs/j4lte.dtb" \
 	--kernel_offset 0x00000000 \
 	--ramdisk_offset 0x00000000 \
 	--tags_offset 0x00000000 \
@@ -17,5 +17,5 @@ python3 ./ImageResources/mkbootimg.py \
 	||_error "\nFailed to create Android Boot Image!\n"
 
 # Compress Boot Image in a tar File for Odin/heimdall Flash
-tar -c boot.img -f Mu-${TARGET_DEVICE}.tar||exit 1
-mv boot.img Mu-${TARGET_DEVICE}.img||exit 1
+tar -c boot.img -f Mu-j4lte.tar||exit 1
+mv boot.img Mu-j4lte.img||exit 1

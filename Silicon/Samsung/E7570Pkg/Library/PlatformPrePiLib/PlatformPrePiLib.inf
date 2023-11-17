@@ -10,9 +10,13 @@
   PlatformUtils.c
 
 [Packages]
+  ArmPkg/ArmPkg.dec
   MdePkg/MdePkg.dec
   SamsungPkg/SamsungPkg.dec
 
 [LibraryClasses]
   BaseLib
   IoLib
+
+[FixedPcd]
+  gArmTokenSpaceGuid.PcdGicRedistributorsBase

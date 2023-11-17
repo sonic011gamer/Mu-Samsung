@@ -34,7 +34,20 @@ TimerConstructor (
   // Check if the ARM Generic Timer Extension is implemented.
   //
   if (ArmIsArchTimerImplemented ()) {
-    DEBUG ((DEBUG_WARN, "CNTFRQ_EL0 ARM Register is NULL!\n"));
+    //
+    // Check if Architectural Timer frequency is pre-determined by the platform
+    // (ie. nonzero).
+    //
+    if (PcdGet32 (PcdArmArchTimerFreqInHz) != 0) {
+      //
+      // Check if ticks/uS is not 0. The Architectural timer runs at constant
+      // frequency, irrespective of CPU frequency. According to Generic Timer
+      // Ref manual, lower bound of the frequency is in the range of 1-10MHz.
+      //
+      ASSERT (TICKS_PER_MICRO_SEC);
+
+      // Do Not Set Freq Again as The Bootloader before our UEFI should have done it in EL3
+    }
   } else {
     DEBUG ((DEBUG_ERROR, "ARM Architectural Timer is not available in the CPU, hence this library cannot be used.\n"));
     ASSERT (0);

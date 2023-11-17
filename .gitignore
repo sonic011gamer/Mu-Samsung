@@ -1,9 +1,6 @@
-.vscode
 Build/
 Conf/
-BootShim/*.bin
-BootShim/*.elf
 ImageResources/bootpayload.bin
-*/*/*/__pycache__
 Mu-*.img
 Mu-*.tar
+*/*/*/__pycache__/

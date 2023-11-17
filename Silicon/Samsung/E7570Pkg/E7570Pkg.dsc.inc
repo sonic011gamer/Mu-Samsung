@@ -11,11 +11,11 @@
 
 # SoC Defines
 [Defines]
-  USE_PHYSICAL_TIMER             = 1
-  CUSTOM_KEYPAD_IMPL             = 1
+  USE_PHYSICAL_TIMER          = 1
+  PRECOMPILED_CRYPTO_BINARIES = 0
 
 [BuildOptions.common]
-  *_*_*_CC_FLAGS = -march=armv8.2-a+crypto+rcpc
+  *_*_AARCH64_CC_FLAGS = -march=armv8.2-a+crypto+rcpc
 
 [PcdsFixedAtBuild.common]
   gArmTokenSpaceGuid.PcdArmArchTimerFreqInHz|26000000
@@ -41,7 +41,6 @@
   PlatformPrePiLib|E7570Pkg/Library/PlatformPrePiLib/PlatformPrePiLib.inf
   HwResetSystemLib|E7570Pkg/Library/ResetSystemLib/ResetSystemLib.inf
   ResetSystemLib|E7570Pkg/Library/ResetSystemLib/ResetSystemLib.inf
-  KeypadDeviceImplLib|E7570Pkg/Library/KeypadDeviceImplLib/KeypadDeviceImplLib.inf
 
 [Components.common]
   E7570Pkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf

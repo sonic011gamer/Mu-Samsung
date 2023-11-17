@@ -1,11 +1,11 @@
 [Defines]
   DEC_SPECIFICATION                   = 0x00010005
-  PACKAGE_NAME                        = a10
-  PACKAGE_GUID                        = f54e021f-3f08-4971-9860-56892e7e78cb
+  PACKAGE_NAME                        = x1s
+  PACKAGE_GUID                        = fffa8af8-0c7a-4240-a68f-4f3611db3547
   PACKAGE_VERSION                     = 0.1
 
 [Includes.common]
   Include                               # Root include for the package
 
 [Guids.common]
-  gx1sTokenSpaceGuid                  = { 0xf54e021f, 0x3f08, 0x4971, { 0x98, 0x60, 0x56, 0x89, 0x2e, 0x7e, 0x78, 0xcb } }
+  gx1sTokenSpaceGuid                  = { 0xfffa8af8, 0x0c7a, 0x4240, { 0xa6, 0x8f, 0x4f, 0x36, 0x11, 0xdb, 0x35, 0x47 } }

@@ -115,6 +115,16 @@ ShLoadLib(CHAR8 *LibName, UINT32 LibVersion, VOID **LibIntf)
   if (LibIntf == NULL)
     return EFI_NOT_FOUND;
 
+  if (AsciiStriCmp(LibName, "UEFI Config Lib") == 0) {
+    *LibIntf = &ConfigLib;
+    return EFI_SUCCESS;
+  }
+
+  if (AsciiStriCmp(LibName, "SerialPort Lib") == 0) {
+    *LibIntf = &SioLib;
+    return EFI_SUCCESS;
+  }
+
   return EFI_NOT_FOUND;
 }
 
@@ -139,8 +149,8 @@ VOID BuildMemHobForFv(IN UINT16 Type)
   }
 }
 
-STATIC GUID gEfiShLibHobGuid     = EFI_SHIM_LIBRARY_GUID;
 STATIC GUID gEfiInfoBlkHobGuid   = EFI_INFORMATION_BLOCK_GUID;
+STATIC GUID gEfiShLibHobGuid     = EFI_SHIM_LIBRARY_GUID;
 
 VOID InstallPlatformHob()
 {
@@ -150,8 +160,8 @@ VOID InstallPlatformHob()
     ARM_MEMORY_REGION_DESCRIPTOR_EX InfoBlk;
     LocateMemoryMapAreaByName("Info Blk", &InfoBlk);
 
-    UINTN InfoBlkAddress = InfoBlk.Address;
-    UINTN ShLibAddress   = (UINTN)&ShLib;
+    UINTN InfoBlkAddress      = InfoBlk.Address;
+    UINTN ShLibAddress        = (UINTN)&ShLib;
 
     BuildMemHobForFv(EFI_HOB_TYPE_FV2);
     BuildGuidDataHob(&gEfiInfoBlkHobGuid, &InfoBlkAddress, sizeof(InfoBlkAddress));

@@ -38,12 +38,12 @@ class CommonPlatform():
     WorkspaceRoot = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
     PackagesPath = (
         "Platforms/Samsung",
-        "Mu_Basecore",
         "Common/Mu",
         "Common/Mu_Tiano_Plus",
         "Common/Mu_OEM_Sample",
-        "Silicon/Arm/Mu_Tiano",
         "Features/DFCI",
+        "Mu_Basecore",
+        "Silicon/Arm/Mu_Tiano",
         "Silicon/Samsung"
     )
 
@@ -73,12 +73,12 @@ class SettingsManager(UpdateSettingsManager, SetupSettingsManager, PrEvalSetting
             If no RequiredSubmodules return an empty iterable
         """
         return [
-            RequiredSubmodule("Mu_Basecore", True),
             RequiredSubmodule("Common/Mu", True),
             RequiredSubmodule("Common/Mu_Tiano_Plus", True),
             RequiredSubmodule("Common/Mu_OEM_Sample", True),
-            RequiredSubmodule("Silicon/Arm/Mu_Tiano", True),
             RequiredSubmodule("Features/DFCI", True),
+            RequiredSubmodule("Mu_Basecore", True),
+            RequiredSubmodule("Silicon/Arm/Mu_Tiano", True),
         ]
 
     def SetArchitectures(self, list_of_requested_architectures):
@@ -210,7 +210,6 @@ class PlatformBuilder( UefiBuilder, BuildSettingsManager):
         self.env.SetValue("BUILDREPORT_TYPES", "PCD DEPEX FLASH BUILD_FLAGS LIBRARY FIXED_ADDRESS HASH", "Setting build report types")
         # Include the MFCI test cert by default, override on the commandline with "BLD_*_SHIP_MODE=TRUE" if you want the retail MFCI cert
         self.env.SetValue("BLD_*_SHIP_MODE", "FALSE", "Default")
-        self.env.SetValue("BLD_*_RAM_SIZE", self.env.GetValue("RAM_SIZE"), "Default")
         self.env.SetValue("BLD_*_FD_BASE", self.env.GetValue("FD_BASE"), "Default")
         self.env.SetValue("BLD_*_FD_SIZE", self.env.GetValue("FD_SIZE"), "Default")
         self.env.SetValue("BLD_*_FD_BLOCKS", self.env.GetValue("FD_BLOCKS"), "Default")

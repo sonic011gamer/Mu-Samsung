@@ -16,22 +16,20 @@
 ################################################################################
 [Defines]
   PLATFORM_NAME                  = x1s
-  PLATFORM_GUID                  = f54e021f-3f08-4971-9860-56892e7e78cb
+  PLATFORM_GUID                  = fffa8af8-0c7a-4240-a68f-4f3611db3547
   PLATFORM_VERSION               = 0.1
   DSC_SPECIFICATION              = 0x00010005
-  OUTPUT_DIRECTORY               = Build/x1sPkg
+  OUTPUT_DIRECTORY               = Build/x1sPkg-$(ARCH)
   SUPPORTED_ARCHITECTURES        = AARCH64
   BUILD_TARGETS                  = DEBUG|RELEASE
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = x1sPkg/x1s.fdf
   BROKEN_CNTFRQ_EL0              = 1
+  DISPLAY_USES_RGBA              = 0
   HAS_SPECIAL_BUTTON             = 0
 
 [BuildOptions.common]
-  *_*_*_CC_FLAGS = -DHAS_SPECIAL_BUTTON=$(HAS_SPECIAL_BUTTON)
-
-[BuildOptions.common]
-  *_CLANG38_AARCH64_CC_FLAGS = -DBROKEN_CNTFRQ_EL0=$(BROKEN_CNTFRQ_EL0)
+  *_*_*_CC_FLAGS = -DDISPLAY_USES_RGBA=$(DISPLAY_USES_RGBA) -DHAS_SPECIAL_BUTTON=$(HAS_SPECIAL_BUTTON) -DBROKEN_CNTFRQ_EL0=$(BROKEN_CNTFRQ_EL0)
 
 [LibraryClasses.common]
   PlatformMemoryMapLib|x1sPkg/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.inf
