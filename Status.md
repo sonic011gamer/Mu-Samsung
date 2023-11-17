@@ -9,7 +9,7 @@
 
 ## Galaxy Note20 5G
 
-<img align="right" src="https://github.com/sonic011gamer/Mu-Samsung/blob/main/Pictures/Galaxy-Note20-5G.png" width="500" alt="Preview">
+<img align="right" src="https://github.com/sonic011gamer/Mu-Samsung/blob/main/Pictures/Galaxy-Note20-5G.png" width="300" alt="Preview">
 
 **SoC: Exynos 9830 (E9830)** <br />
 **Codename: c1s** <br />
