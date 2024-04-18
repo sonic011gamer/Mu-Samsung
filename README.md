@@ -1,3 +1,5 @@
+# Development has been Moved to [Mu-Silicium](https://github.com/Robotix22/Mu-Silicium)!
+
 # [Project Mu](https://microsoft.github.io/mu/) UEFI Implementation for Samsung Exynos™ Devices
 
 <!-- ![Banner](https://github.com/sonic011gamer/Mu-Samsung/blob/main/Pictures/Banner.png) -->
